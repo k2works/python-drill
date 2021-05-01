@@ -1,6 +1,16 @@
-# Pythonで練習するアルゴリズムとデータ構造とテスト駆動開発
 [![Python application](https://github.com/k2works/python-drill/actions/workflows/python-app.yml/badge.svg)](https://github.com/k2works/python-drill/actions/workflows/python-app.yml)
+# Pythonで練習するアルゴリズムとデータ構造とテスト駆動開発
 
+# Quick Startup
+
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/k2works/python-drill)
+                                                                                            
+```
+python -m pip install --upgrade pip
+pip install flake8 pytest
+pytest
+```
 # 基本的なアルゴリズム
 ## アルゴリズムとは
 ## 繰り返し
