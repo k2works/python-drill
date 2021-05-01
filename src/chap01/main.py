@@ -1,5 +1,5 @@
 # %% [markdown]
-#　アルゴリズムとは
+# # アルゴリズムとは
 # %%
 import unittest
 import doctest
@@ -52,6 +52,31 @@ def max3(a, b, c):
         maximum = c
 
     return maximum
+
+
+# %% [markdown]
+# ## 条件判定と分岐
+# %%
+
+class TestjudgeSign(unittest.TestCase):
+    def test_judge_sign(self):
+        self.assertEqual(judge_sign(17), 'その値は正です。')
+        self.assertEqual(judge_sign(-5), 'その値は負です。')
+        self.assertEqual(judge_sign(0), 'その値は0です。')
+
+
+def judge_sign(n):
+    """ 読み込んだ整数値の符号を表示
+
+    >>> judge_sign(17)
+    'その値は正です。'
+    """
+    if n > 0:
+        return 'その値は正です。'
+    if n < 0:
+        return 'その値は負です。'
+    else:
+        return 'その値は0です。'
 
 
 doctest.testmod(verbose=True)
