@@ -78,6 +78,31 @@ def judge_sign(n):
     else:
         return 'その値は0です。'
 
+# %% [markdown]
+# # 繰り返し
+
+# 1からnまでの整数の総和を求める
+# %%
+
+
+class TestSum1ToNWhile(unittest.TestCase):
+    def test_1からnまでをwhileで求める(self):
+        self.assertEqual(sum_1_to_n_while(5), 15)
+
+    def test_1からnまでをforで求める(self):
+        self.assertEqual(sum_1_to_n_for(5), 15)
+
+    def test_1からnまでをガウスの方法で求める(self):
+        self.assertEqual(sum_1_to_n_gauss(5), 15)
+
+def sum_1_to_n_while(n):
+    pass
+
+def sum_1_to_n_for(n):
+    pass
+
+def sum_1_to_n_gauss(n):
+    pass
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
