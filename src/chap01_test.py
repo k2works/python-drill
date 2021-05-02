@@ -86,13 +86,13 @@ def judge_sign(n):
 
 
 class TestSum1ToNWhile(unittest.TestCase):
-    def test_1からnまでをwhileで求める(self):
+    def test_while文による繰り返し(self):
         self.assertEqual(sum_1_to_n_while(5), 15)
 
-    def test_1からnまでをforで求める(self):
+    def test_for文による繰り返し(self):
         self.assertEqual(sum_1_to_n_for(5), 15)
 
-    def test_1からnまでをガウスの方法で求める(self):
+    def test_ガウスの方法(self):
         self.assertEqual(sum_1_to_n_gauss(5), 15)
 
 def sum_1_to_n_while(n):
