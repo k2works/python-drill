@@ -96,13 +96,23 @@ class TestSum1ToNWhile(unittest.TestCase):
         self.assertEqual(sum_1_to_n_gauss(5), 15)
 
 def sum_1_to_n_while(n):
-    pass
+    sum = 0
+    i = 1
+    while i <= n:
+        sum += i
+        i += 1
+    return sum
 
 def sum_1_to_n_for(n):
-    pass
+    sum = 0
+    i = 1
+    for i in range(i, n + 1):
+        sum += i
+    return sum
 
 def sum_1_to_n_gauss(n):
-    pass
+    sum = n * (n + 1) // 2
+    return sum
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
