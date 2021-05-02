@@ -126,8 +126,7 @@ def sum_1_to_n_gauss(n):
     >>> sum_1_to_n_gauss(5)
     15
     """
-    sum = n * (n + 1) // 2
-    return sum
+    return n * (n + 1) // 2
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
