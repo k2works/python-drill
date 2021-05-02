@@ -96,6 +96,11 @@ class TestSum1ToNWhile(unittest.TestCase):
         self.assertEqual(sum_1_to_n_gauss(5), 15)
 
 def sum_1_to_n_while(n):
+    """ while文による繰り返し
+
+    >>> sum_1_to_n_while(5)
+    15
+    """
     sum = 0
     i = 1
     while i <= n:
@@ -104,6 +109,11 @@ def sum_1_to_n_while(n):
     return sum
 
 def sum_1_to_n_for(n):
+    """ for文による繰り返し
+
+    >>> sum_1_to_n_for(5)
+    15
+    """
     sum = 0
     i = 1
     for i in range(i, n + 1):
@@ -111,6 +121,11 @@ def sum_1_to_n_for(n):
     return sum
 
 def sum_1_to_n_gauss(n):
+    """ ガウスの方法
+
+    >>> sum_1_to_n_gauss(5)
+    15
+    """
     sum = n * (n + 1) // 2
     return sum
 
