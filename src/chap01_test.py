@@ -129,5 +129,16 @@ def sum_1_to_n_gauss(n):
     """
     return n * (n + 1) // 2
 
+# %% [markdown]
+# ## 繰返しの過程における条件判定（その１）
+# %%
+
+class TestSumVerbose(unittest.TestCase):
+    def test_aからbまでの総和を求める_1(self):
+        self.assertEqual(sum_verbose_1(3, 3), '3 = 3')
+
+    def test_aからbまでの総和を求める_2(self):
+        self.assertEqual(sum_verbose_2(3, 3), '3 = 3')
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
