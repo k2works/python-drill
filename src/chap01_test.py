@@ -96,6 +96,7 @@ class TestSum1ToNWhile(unittest.TestCase):
     def test_ガウスの方法(self):
         self.assertEqual(sum_1_to_n_gauss(5), 15)
 
+
 def sum_1_to_n_while(n):
     """ while文による繰り返し
 
@@ -109,6 +110,7 @@ def sum_1_to_n_while(n):
         i += 1
     return sum
 
+
 def sum_1_to_n_for(n):
     """ for文による繰り返し
 
@@ -120,6 +122,7 @@ def sum_1_to_n_for(n):
     for i in range(i, n + 1):
         sum += i
     return sum
+
 
 def sum_1_to_n_gauss(n):
     """ ガウスの方法
@@ -133,12 +136,60 @@ def sum_1_to_n_gauss(n):
 # ## 繰返しの過程における条件判定（その１）
 # %%
 
+
 class TestSumVerbose(unittest.TestCase):
     def test_aからbまでの総和を求める_1(self):
         self.assertEqual(sum_verbose_1(3, 3), '3 = 3')
+        self.assertEqual(sum_verbose_1(3, 4), '3 + 4 = 7')
+        self.assertEqual(sum_verbose_1(3, 7), '3 + 4 + 5 + 6 + 7 = 25')
 
     def test_aからbまでの総和を求める_2(self):
         self.assertEqual(sum_verbose_2(3, 3), '3 = 3')
+        self.assertEqual(sum_verbose_2(3, 4), '3 + 4 = 7')
+        self.assertEqual(sum_verbose_2(3, 7), '3 + 4 + 5 + 6 + 7 = 25')
+
+
+def sum_verbose_1(a, b):
+    """ aからbまでの総和を求める
+
+    >>> sum_verbose_1(3, 4)
+    '3 + 4 = 7'
+    """
+
+    if a > b:
+        a, b = b, a
+
+    sum = 0
+    result = ''
+    for i in range(a, b + 1):
+        if i < b:
+            result += f'{i} + '
+        else:
+            result += f'{i} ='
+        sum += i
+    result += f' {sum}'
+    return result
+
+
+def sum_verbose_2(a, b):
+    """ aからbまでの総和を求める
+
+    >>> sum_verbose_2(3, 4)
+    '3 + 4 = 7'
+    """
+
+    if a > b:
+        a, b = b, a
+
+    sum = 0
+    result = ''
+    for i in range(a, b):
+        result += f'{i} + '
+        sum += i
+    sum += b
+    result += f'{b} = {sum}'
+    return result
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
