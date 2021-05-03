@@ -160,12 +160,10 @@ def sum_verbose_1(a, b):
         a, b = b, a
 
     sum = 0
+    buildExpression = lambda i, b: f'{i} + ' if i < b else f'{i} ='
     result = ''
     for i in range(a, b + 1):
-        if i < b:
-            result += f'{i} + '
-        else:
-            result += f'{i} ='
+        result += buildExpression(i, b)
         sum += i
     result += f' {sum}'
     return result
