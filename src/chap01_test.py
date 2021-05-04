@@ -196,6 +196,7 @@ def sum_verbose_2(a, b):
 class TestAlternative(unittest.TestCase):
     def test_記号文字を交互に表示_1(self):
         self.assertEqual(alternative_1(12), '+-+-+-+-+-+-')
+        self.assertEqual(alternative_1(13), '+-+-+-+-+-+-+')
 
     def test_記号文字を交互に表示_2(self):
         self.assertEqual(alternative_2(12), '+-+-+-+-+-+-')
