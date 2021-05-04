@@ -160,7 +160,7 @@ def sum_verbose_1(a, b):
         a, b = b, a
 
     sum = 0
-    buildExpression = lambda i, b: f'{i} + ' if i < b else f'{i} ='
+    def buildExpression(i, b): return f'{i} + ' if i < b else f'{i} ='
     result = ''
     for i in range(a, b + 1):
         result += buildExpression(i, b)
@@ -192,12 +192,47 @@ def sum_verbose_2(a, b):
 # ## 繰返しの過程における条件判定（その２）
 # %%
 
+
 class TestAlternative(unittest.TestCase):
     def test_記号文字を交互に表示_1(self):
         self.assertEqual(alternative_1(12), '+-+-+-+-+-+-')
 
     def test_記号文字を交互に表示_2(self):
         self.assertEqual(alternative_2(12), '+-+-+-+-+-+-')
+
+
+def alternative_1(n):
+    """ 記号文字+と-を交互に表示（その１）
+
+    >>> alternative_1(12)
+    '+-+-+-+-+-+-'
+    """
+    result = ''
+
+    for i in range(n):
+        if i % 2:
+            result += '-'
+        else:
+            result += '+'
+
+    return result
+
+
+def alternative_2(n):
+    """ 記号文字+と-を交互に表示（その２）
+
+    >>> alternative_2(12)
+    '+-+-+-+-+-+-'
+    """
+    result = ''
+    for _ in range(n // 2):
+        result += '+-'
+
+    if n % 2:
+        result += '+'
+
+    return result
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
