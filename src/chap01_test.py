@@ -208,12 +208,9 @@ def alternative_1(n):
     '+-+-+-+-+-+-'
     """
     result = ''
-
+    def buildResult(i): return '-' if i % 2 else '+'
     for i in range(n):
-        if i % 2:
-            result += '-'
-        else:
-            result += '+'
+        result += buildResult(i)
 
     return result
 
@@ -225,6 +222,7 @@ def alternative_2(n):
     '+-+-+-+-+-+-'
     """
     result = ''
+
     for _ in range(n // 2):
         result += '+-'
 
