@@ -199,6 +199,7 @@ class TestAlternative(unittest.TestCase):
 
     def test_記号文字を交互に表示_2(self):
         self.assertEqual(alternative_2(12), '+-+-+-+-+-+-')
+        self.assertEqual(alternative_2(13), '+-+-+-+-+-+-+')
 
 
 def alternative_1(n):
@@ -207,7 +208,7 @@ def alternative_1(n):
     >>> alternative_1(12)
     '+-+-+-+-+-+-'
     """
-    build_symbol = lambda i: '-' if i % 2 else '+'
+    def build_symbol(i): return '-' if i % 2 else '+'
     return ''.join(map(build_symbol, range(n)))
 
 
@@ -217,15 +218,8 @@ def alternative_2(n):
     >>> alternative_2(12)
     '+-+-+-+-+-+-'
     """
-    result = ''
-
-    for _ in range(n // 2):
-        result += '+-'
-
-    if n % 2:
-        result += '+'
-
-    return result
+    result = ''.join(map(lambda i: '+-', range(n // 2)))
+    return result + '+' if n % 2 else result
 
 
 doctest.testmod(verbose=True)
