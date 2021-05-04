@@ -188,6 +188,16 @@ def sum_verbose_2(a, b):
     result += f'{b} = {sum}'
     return result
 
+# %% [markdown]
+# ## 繰返しの過程における条件判定（その２）
+# %%
+
+class TestAlternative(unittest.TestCase):
+    def test_記号文字を交互に表示_1(self):
+        self.assertEqual(alternative_1(12), '+-+-+-+-+-+-')
+
+    def test_記号文字を交互に表示_2(self):
+        self.assertEqual(alternative_2(12), '+-+-+-+-+-+-')
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
