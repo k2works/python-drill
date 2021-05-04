@@ -208,10 +208,7 @@ def alternative_1(n):
     '+-+-+-+-+-+-'
     """
     result = ''
-    def buildResult(i): return '-' if i % 2 else '+'
-    for i in range(n):
-        result += buildResult(i)
-
+    result = ''.join(map(lambda i: '-' if i % 2 else '+', range(n)))
     return result
 
 
