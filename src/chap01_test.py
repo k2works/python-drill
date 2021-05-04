@@ -207,9 +207,7 @@ def alternative_1(n):
     >>> alternative_1(12)
     '+-+-+-+-+-+-'
     """
-    result = ''
-    result = ''.join(map(lambda i: '-' if i % 2 else '+', range(n)))
-    return result
+    return ''.join(map(lambda i: '-' if i % 2 else '+', range(n)))
 
 
 def alternative_2(n):
