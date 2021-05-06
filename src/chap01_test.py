@@ -150,8 +150,12 @@ def sum_range(a, b):
     >>> sum_range(3,8)
     33
     """
-    if a > b:
-        a, b = b, a
+    def swap(a, b): 
+        if a > b:
+            return b, a
+        else:
+            return a, b
+    a, b = swap(a, b)
     return sum(range(a, b + 1))
 
 
