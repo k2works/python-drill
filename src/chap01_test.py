@@ -241,7 +241,9 @@ def print_starts_1(n, w):
     >>> print_starts_1(14, 5)
     '*****\\n*****\\n****\\n'
     """
-    result = ''.join(map(lambda i: '*\n' if i % w == w - 1 else '*', range(n)))
+    def build_symbole_with_word_wrap(
+        i): return '*\n' if i % w == w - 1 else '*'
+    result = ''.join(map(build_symbole_with_word_wrap, range(n)))
     result += '\n'
 
     return result
@@ -253,7 +255,8 @@ def print_starts_2(n, w):
     >>> print_starts_2(14, 5)
     '*****\\n*****\\n****\\n'
     """
-    result = ''.join(map(lambda i: '*' * w + '\n', range(n // w)))
+    def build_symbole_with_word_wrap(i): return '*' * w + '\n'
+    result = ''.join(map(build_symbole_with_word_wrap, range(n // w)))
     rest = n % w
     result += '*' * rest + '\n'
 
