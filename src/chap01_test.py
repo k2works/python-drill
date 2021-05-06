@@ -133,6 +133,16 @@ def sum_1_to_n_gauss(n):
     return n * (n + 1) // 2
 
 # %% [markdown]
+# ## ２値のソートと２価の交換
+# %%
+
+class TestSum(unittest.TestCase):
+    def test_aからbまでの総和を求める(self):
+        self.assertEqual(sum(3, 8), 33)
+
+
+
+# %% [markdown]
 # ## 繰返しの過程における条件判定（その１）
 # %%
 
