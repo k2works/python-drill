@@ -136,10 +136,25 @@ def sum_1_to_n_gauss(n):
 # ## ２値のソートと２価の交換
 # %%
 
+
 class TestSum(unittest.TestCase):
     def test_aからbまでの総和を求める(self):
         self.assertEqual(sum(3, 8), 33)
 
+
+def sum(a, b):
+    """ aからbまでの総和を求める
+
+    >>> sum(3,8)
+    33
+    """
+    if a > b:
+        a, b = b, a
+    sum = 0
+    for i in range(a, b + 1):
+        sum += i
+
+    return sum
 
 
 # %% [markdown]
