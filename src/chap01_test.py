@@ -234,23 +234,18 @@ class TestPrintStars(unittest.TestCase):
     def test_n個の記号文字をw個ごとに改行しながら表示_2(self):
         self.assertEqual(print_starts_2(14, 5), '*****\n*****\n****\n')
 
+
 def print_starts_1(n, w):
     """ n個の記号文字*をw個ごとに改行しながら表示（その１）
 
     >>> print_starts_1(14, 5)
     '*****\\n*****\\n****\\n'
     """
+    result = ''.join(map(lambda i: '*\n' if i % w == w - 1 else '*', range(n)))
+    result += '\n'
 
-    result = ''
-    for i in range(n):
-        result += '*'
-        if i % w == w - 1:
-            result += '\n'
-    
-    if n % w:
-        result += '\n'
-    
     return result
+
 
 def print_starts_2(n, w):
     """ n個の記号文字*をw個ごとに改行しながら表示（その２）
@@ -258,17 +253,12 @@ def print_starts_2(n, w):
     >>> print_starts_2(14, 5)
     '*****\\n*****\\n****\\n'
     """
-
-    result = ''
-    for _ in range(n // w):
-        result += '*' * w + '\n'
-
+    result = ''.join(map(lambda i: '*' * w + '\n', range(n // w)))
     rest = n % w
-    if rest:
-        result += '*' * rest + '\n'
+    result += '*' * rest + '\n'
 
     return result
-    
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
