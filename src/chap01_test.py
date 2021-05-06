@@ -223,5 +223,16 @@ def alternative_2(n):
     return result + '+' if n % 2 else result
 
 
+# %% [markdown]
+# ## 繰返しの過程における条件判定（その３）
+# %%
+
+class TestPrintStars(unittest.TestCase):
+    def test_n個の記号文字をw個ごとに改行しながら表示_1(self):
+        self.assertEqual(print_starts_1(14, 5), '*****\n*****\n****\n')
+
+    def test_n個の記号文字をw個ごとに改行しながら表示_2(self):
+        self.assertEqual(print_starts_2(14, 5), '*****\n*****\n****\n')
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
