@@ -1,8 +1,9 @@
 # %% [markdown]
 # # アルゴリズムとは
 # %%
-import unittest
 import doctest
+import unittest
+
 # %% [markdown]
 # ## 3値の最大値
 #
@@ -139,13 +140,14 @@ def sum_1_to_n_gauss(n):
 
 class TestSum(unittest.TestCase):
     def test_aからbまでの総和を求める(self):
-        self.assertEqual(sum(3, 8), 33)
+        self.assertEqual(sum_range(3, 8), 33)
+        self.assertEqual(sum_range(8, 3), 33)
 
 
-def sum(a, b):
+def sum_range(a, b):
     """ aからbまでの総和を求める
 
-    >>> sum(3,8)
+    >>> sum_range(3,8)
     33
     """
     if a > b:
