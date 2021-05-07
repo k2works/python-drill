@@ -297,7 +297,30 @@ class TestSum1ToPositive(unittest.TestCase):
     def test_1からnまでの総和を求める(self):
         self.assertEqual(sum_1_to_positive(-6), None)
         self.assertEqual(sum_1_to_positive(0), None)
-        self.assertEqual(sum_1_to_positive(10), None)
+        self.assertEqual(sum_1_to_positive(10), 55)
+
+
+def sum_1_to_positive(n):
+    """ 1からnまでの総和を求める（nに正の整数値を読み込む）
+
+    >>> sum_1_to_positive(10)
+    55
+    """
+    if n <= 0:
+        return None
+
+    while True:
+        if n > 0:
+            break
+
+    sum = 0
+    i = 1
+
+    for i in range(1, n + 1):
+        sum += i
+        i += 1
+
+    return sum
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
