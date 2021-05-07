@@ -289,6 +289,15 @@ def print_starts_2(n, w):
 
     return result
 
+# %% [markdown]
+# ## 正の値の読み込み
+# %%
+
+class TestSum1ToPositive(unittest.TestCase):
+    def test_1からnまでの総和を求める(self):
+        self.assertEqual(sum_1_to_positive(-6), None)
+        self.assertEqual(sum_1_to_positive(0), None)
+        self.assertEqual(sum_1_to_positive(10), None)
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
