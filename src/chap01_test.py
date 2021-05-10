@@ -339,9 +339,13 @@ def rectangle(area):
             return False
         return True
 
+    条件を満たす辺の長さリスト = []
     for i in range(1, area + 1):
         if 条件を満たす(i, area):
-           result += f'{i}x{area // i} '
+           条件を満たす辺の長さリスト.append(i)
+
+    for i in 条件を満たす辺の長さリスト:
+        result += f'{i}x{area // i} '
 
     return result
 
