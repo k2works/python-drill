@@ -150,7 +150,7 @@ def sum_range(a, b):
     >>> sum_range(3,8)
     33
     """
-    def swap(a, b): 
+    def swap(a, b):
         if a > b:
             return b, a
         else:
@@ -293,6 +293,7 @@ def print_starts_2(n, w):
 # ## 正の値の読み込み
 # %%
 
+
 class TestSum1ToPositive(unittest.TestCase):
     def test_1からnまでの総和を求める(self):
         self.assertEqual(sum_1_to_positive(-6), None)
@@ -319,6 +320,7 @@ def sum_1_to_positive(n):
 # ## 辺と面積が整数値である長方形
 # %%
 
+
 class TestRectangle(unittest.TestCase):
     def test_縦横が整数で面積がareaの長方形の辺の長さを列挙(self):
         self.assertEqual(rectangle(32), '1x32 2x16 4x8 ')
@@ -329,7 +331,7 @@ def rectangle(area):
 
     >>> rectangle(32)
     '1x32 2x16 4x8 '
-    """ 
+    """
     def 条件を満たす(i, area):
         if i * i > area:
             return False
@@ -341,7 +343,6 @@ def rectangle(area):
     縦横が整数で面積がareaの長方形の辺の長さを列挙リスト = [f'{i}x{area // i} ' for i in 条件を満たす辺の長さリスト]
 
     return ''.join(縦横が整数で面積がareaの長方形の辺の長さを列挙リスト)
-
 
 
 doctest.testmod(verbose=True)
