@@ -331,12 +331,17 @@ def rectangle(area):
     '1x32 2x16 4x8 '
     """ 
     result = ''
-    for i in range(1, area + 1):
+
+    def 条件を満たす(i, area):
         if i * i > area:
-            break
+            return False
         if area % i:
-            continue
-        result += f'{i}x{area // i} '
+            return False
+        return True
+
+    for i in range(1, area + 1):
+        if 条件を満たす(i, area):
+           result += f'{i}x{area // i} '
 
     return result
 
