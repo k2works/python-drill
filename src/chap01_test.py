@@ -315,5 +315,14 @@ def sum_1_to_positive(n):
 
     return sum(range(1, n + 1))
 
+# %% [markdown]
+# ## 辺と面積が整数値である長方形
+# %%
+
+class TestRectangle(unittest.TestCase):
+    def test_縦横が整数で面積がareaの長方形の辺の長さを列挙(self):
+        self.assertEqual(rectangle(32), '1x32 2x16 4x8')
+
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
