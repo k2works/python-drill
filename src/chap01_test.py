@@ -330,8 +330,6 @@ def rectangle(area):
     >>> rectangle(32)
     '1x32 2x16 4x8 '
     """ 
-    result = ''
-
     def 条件を満たす(i, area):
         if i * i > area:
             return False
@@ -340,9 +338,10 @@ def rectangle(area):
         return True
 
     条件を満たす辺の長さリスト = [i for i in range(1, area + 1) if 条件を満たす(i, area)]
-    result = [f'{i}x{area // i} ' for i in 条件を満たす辺の長さリスト]
+    縦横が整数で面積がareaの長方形の辺の長さを列挙リスト = [f'{i}x{area // i} ' for i in 条件を満たす辺の長さリスト]
 
-    return ''.join(result)
+    return ''.join(縦横が整数で面積がareaの長方形の辺の長さを列挙リスト)
+
 
 
 doctest.testmod(verbose=True)
