@@ -321,7 +321,24 @@ def sum_1_to_positive(n):
 
 class TestRectangle(unittest.TestCase):
     def test_縦横が整数で面積がareaの長方形の辺の長さを列挙(self):
-        self.assertEqual(rectangle(32), '1x32 2x16 4x8')
+        self.assertEqual(rectangle(32), '1x32 2x16 4x8 ')
+
+
+def rectangle(area):
+    """ 縦横が整数で面積がareaの長方形の辺の長さを列挙
+
+    >>> rectangle(32)
+    '1x32 2x16 4x8 '
+    """ 
+    result = ''
+    for i in range(1, area + 1):
+        if i * i > area:
+            break
+        if area % i:
+            continue
+        result += f'{i}x{area // i} '
+
+    return result
 
 
 doctest.testmod(verbose=True)
