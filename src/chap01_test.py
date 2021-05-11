@@ -363,8 +363,8 @@ def skip_1():
     '1 2 3 4 5 6 7 9 10 11 12 '
     """
     条件を満たすリスト = [i for i in range(1, 13) if i != 8]
-    result = [f'{i}' for i in 条件を満たすリスト]
-    return ' '.join(result)
+    return ' '.join([f'{i}' for i in 条件を満たすリスト])
+
 
 
 def skip_2():
