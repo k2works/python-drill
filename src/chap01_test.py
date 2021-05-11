@@ -3,6 +3,7 @@
 # %%
 import doctest
 import unittest
+from unittest.case import skip
 
 # %% [markdown]
 # ## 3値の最大値
@@ -343,6 +344,15 @@ def rectangle(area):
     縦横が整数で面積がareaの長方形の辺の長さを列挙リスト = [f'{i}x{area // i} ' for i in 条件を満たす辺の長さリスト]
 
     return ''.join(縦横が整数で面積がareaの長方形の辺の長さを列挙リスト)
+
+# %% [markdown]
+# ## 繰り返しのスキップと複数のrangeの走査
+# %%
+
+class TestSkip(unittest.TestCase):
+    def test_1から12までを8をスキップして繰り返す(self):
+        self.assertEqual(skip_1(), '1 2 3 4 5 6 7 9 10 11 12 ')
+        self.assertEqual(skip_2(), '1 2 3 4 5 6 7 9 10 11 12 ')
 
 
 doctest.testmod(verbose=True)
