@@ -349,10 +349,39 @@ def rectangle(area):
 # ## 繰り返しのスキップと複数のrangeの走査
 # %%
 
+
 class TestSkip(unittest.TestCase):
     def test_1から12までを8をスキップして繰り返す(self):
         self.assertEqual(skip_1(), '1 2 3 4 5 6 7 9 10 11 12 ')
         self.assertEqual(skip_2(), '1 2 3 4 5 6 7 9 10 11 12 ')
+
+
+def skip_1():
+    """ 1から12までを8をスキップして繰り返す（その１）
+
+    >>> skip_1()
+    '1 2 3 4 5 6 7 9 10 11 12 '
+    """
+    result = ''
+    for i in range(1, 13):
+        if i == 8:
+            continue
+        result += f'{i} '
+
+    return result
+
+
+def skip_2():
+    """ 1から12までを8をスキップして繰り返す（その２）
+
+    >>> skip_2()
+    '1 2 3 4 5 6 7 9 10 11 12 '
+    """
+    result = ''
+    for i in list(range(1, 8)) + list(range(9, 13)):
+        result += f'{i} '
+
+    return result
 
 
 doctest.testmod(verbose=True)
