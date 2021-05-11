@@ -356,6 +356,10 @@ class TestSkip(unittest.TestCase):
         self.assertEqual(skip_2(), '1 2 3 4 5 6 7 9 10 11 12')
 
 
+def リストを文字列に結合する(list):
+    return ' '.join(f'{i}' for i in list)
+
+
 def skip_1():
     """ 1から12までを8をスキップして繰り返す（その１）
 
@@ -363,8 +367,7 @@ def skip_1():
     '1 2 3 4 5 6 7 9 10 11 12 '
     """
     条件を満たすリスト = [i for i in range(1, 13) if i != 8]
-    return ' '.join([f'{i}' for i in 条件を満たすリスト])
-
+    return リストを文字列に結合する(条件を満たすリスト)
 
 
 def skip_2():
@@ -374,7 +377,7 @@ def skip_2():
     '1 2 3 4 5 6 7 9 10 11 12 '
     """
     合成リスト = list(list(range(1, 8)) + list(range(9, 13)))
-    return ' '.join([f'{i}' for i in 合成リスト])
+    return リストを文字列に結合する(合成リスト)
 
 
 doctest.testmod(verbose=True)
