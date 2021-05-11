@@ -373,7 +373,8 @@ def skip_2():
     >>> skip_2()
     '1 2 3 4 5 6 7 9 10 11 12 '
     """
-    条件を満たすリスト = [f'{i}' for i in list(list(range(1, 8)) + list(range(9, 13)))]
+    合成リスト = list(list(range(1, 8)) + list(range(9, 13)))
+    条件を満たすリスト = [f'{i}' for i in 合成リスト]
     return ' '.join(条件を満たすリスト)
 
 
