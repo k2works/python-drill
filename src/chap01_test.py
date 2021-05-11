@@ -352,8 +352,8 @@ def rectangle(area):
 
 class TestSkip(unittest.TestCase):
     def test_1から12までを8をスキップして繰り返す(self):
-        self.assertEqual(skip_1(), '1 2 3 4 5 6 7 9 10 11 12 ')
-        self.assertEqual(skip_2(), '1 2 3 4 5 6 7 9 10 11 12 ')
+        self.assertEqual(skip_1(), '1 2 3 4 5 6 7 9 10 11 12')
+        self.assertEqual(skip_2(), '1 2 3 4 5 6 7 9 10 11 12')
 
 
 def skip_1():
@@ -362,13 +362,9 @@ def skip_1():
     >>> skip_1()
     '1 2 3 4 5 6 7 9 10 11 12 '
     """
-    result = ''
-    for i in range(1, 13):
-        if i == 8:
-            continue
-        result += f'{i} '
-
-    return result
+    result = [i for i in range(1, 13) if i != 8]
+    result = [f'{i}' for i in result]
+    return ' '.join(result)
 
 
 def skip_2():
@@ -377,11 +373,8 @@ def skip_2():
     >>> skip_2()
     '1 2 3 4 5 6 7 9 10 11 12 '
     """
-    result = ''
-    for i in list(range(1, 8)) + list(range(9, 13)):
-        result += f'{i} '
-
-    return result
+    result = [f'{i}' for i in list(list(range(1, 8)) + list(range(9, 13)))]
+    return ' '.join(result)
 
 
 doctest.testmod(verbose=True)
