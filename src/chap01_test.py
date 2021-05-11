@@ -362,8 +362,8 @@ def skip_1():
     >>> skip_1()
     '1 2 3 4 5 6 7 9 10 11 12 '
     """
-    result = [i for i in range(1, 13) if i != 8]
-    result = [f'{i}' for i in result]
+    条件を満たすリスト = [i for i in range(1, 13) if i != 8]
+    result = [f'{i}' for i in 条件を満たすリスト]
     return ' '.join(result)
 
 
@@ -373,8 +373,8 @@ def skip_2():
     >>> skip_2()
     '1 2 3 4 5 6 7 9 10 11 12 '
     """
-    result = [f'{i}' for i in list(list(range(1, 8)) + list(range(9, 13)))]
-    return ' '.join(result)
+    条件を満たすリスト = [f'{i}' for i in list(list(range(1, 8)) + list(range(9, 13)))]
+    return ' '.join(条件を満たすリスト)
 
 
 doctest.testmod(verbose=True)
