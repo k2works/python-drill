@@ -413,8 +413,7 @@ def multiplication_table():
 
     footer = ''.join(['-' for _ in range(27)])
 
-    result = header + body + footer
-    return result
+    return header + body + footer
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
