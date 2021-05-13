@@ -410,8 +410,7 @@ def multiplication_table():
     result = header + '\n'
 
     def row(i): return ''.join([f'{i * j:3}' for j in range(1, 10)]) + '\n'
-    for i in range(1, 10):
-        result += row(i)
+    result += ''.join([row(i) for i in range(1, 10)])
 
     footer = ''.join(['-' for _ in range(27)])
     result += footer
