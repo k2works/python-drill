@@ -415,9 +415,6 @@ def multiplication_table():
 
     return header + body + footer
 
-doctest.testmod(verbose=True)
-unittest.main(argv=[''], verbosity=2, exit=False)
-
 # %% [markdown]
 # ## 直角三角形の表示
 # %%
@@ -443,3 +440,18 @@ def traiangle_lb(n):
     """
     右側 = lambda i: ''.join(['*' for _ in range(i + 1)]) + '\n'
     return ''.join([右側(i) for i in range(n)])
+
+class TestTraiangleRb(unittest.TestCase):
+    def test_traiangle_rb(self):
+        expected = """\
+    *
+   **
+  ***
+ ****
+*****
+"""
+        self.assertEqual(traiangle_rg(5), expected)
+
+
+doctest.testmod(verbose=True)
+unittest.main(argv=[''], verbosity=2, exit=False)
