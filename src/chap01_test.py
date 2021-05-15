@@ -418,4 +418,18 @@ def multiplication_table():
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
 
+# %% [markdown]
+# ## 直角三角形の表示
 # %%
+
+
+class TestTraiangleLb(unittest.TestCase):
+    def test_taiangle_lb(self):
+        expected = """\
+*
+**
+***
+****
+*****            
+"""
+        self.assertEqual(traiangle_lb(5), expected)
