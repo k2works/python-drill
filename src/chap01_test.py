@@ -399,7 +399,8 @@ class TestMultiplicationTable(unittest.TestCase):
   9 18 27 36 45 54 63 72 81
 ---------------------------\
 """
-        self.assertEqual(multiplication_table(), expected)       
+        self.assertEqual(multiplication_table(), expected)
+
 
 def multiplication_table():
     """ 九九の表を表示
@@ -438,8 +439,9 @@ def traiangle_lb(n):
     >>> traiangle_lb(5)
     '*\\n**\\n***\\n****\\n*****\\n'
     """
-    右側 = lambda i: ''.join(['*' for _ in range(i + 1)]) + '\n'
+    def 右側(i): return ''.join(['*' for _ in range(i + 1)]) + '\n'
     return ''.join([右側(i) for i in range(n)])
+
 
 class TestTraiangleRb(unittest.TestCase):
     def test_traiangle_rb(self):
@@ -452,6 +454,7 @@ class TestTraiangleRb(unittest.TestCase):
 """
         self.assertEqual(traiangle_rg(5), expected)
 
+
 def traiangle_rg(n):
     """ 右下側が直角の二等辺三角形を表示
 
@@ -461,8 +464,9 @@ def traiangle_rg(n):
     def 右側(i): return ''.join(' ' for _ in range(n - i - 1))
     def 左側(i): return ''.join('*' for _ in range(i + 1))
     def 三角形(i): return ''.join([row(i) for row in (右側, 左側)]) + '\n'
-    高さnの三角形 = ''.join([三角形(i) for i in range(n)]) 
+    高さnの三角形 = ''.join([三角形(i) for i in range(n)])
     return 高さnの三角形
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
