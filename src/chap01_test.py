@@ -459,8 +459,8 @@ def traiangle_rg(n):
     '    *\\n   **\\n  ***\\n ****\\n*****\\n'
     """
     result = ''
-    right = lambda i: ''.join(' ' for _ in range(n - i - 1))
-    left = lambda i: ''.join('*' for _ in range(i + 1))
+    def right(i): return ''.join(' ' for _ in range(n - i - 1))
+    def left(i): return ''.join('*' for _ in range(i + 1))
     for i in range(n):
         result += right(i)
         result += left(i)
