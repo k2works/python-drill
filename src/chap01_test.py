@@ -458,10 +458,11 @@ def traiangle_rg(n):
     >>> traiangle_rg(5)
     '    *\\n   **\\n  ***\\n ****\\n*****\\n'
     """
-    def right(i): return ''.join(' ' for _ in range(n - i - 1))
-    def left(i): return ''.join('*' for _ in range(i + 1))
-    def triangle(i): return ''.join([row(i) for row in (right, left)]) + '\n'
-    return ''.join([triangle(i) for i in range(n)]) 
+    def 右側(i): return ''.join(' ' for _ in range(n - i - 1))
+    def 左側(i): return ''.join('*' for _ in range(i + 1))
+    def 三角形(i): return ''.join([row(i) for row in (右側, 左側)]) + '\n'
+    高さnの三角形 = ''.join([三角形(i) for i in range(n)]) 
+    return 高さnの三角形
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
