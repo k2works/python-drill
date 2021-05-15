@@ -460,10 +460,8 @@ def traiangle_rg(n):
     """
     result = ''
     for i in range(n):
-        for _ in range(n - i - 1):
-            result += ' '
-        for _ in range(i + 1):
-            result += '*'
+        result += ''.join(' ' for _ in range(n - i - 1))
+        result += ''.join('*' for _ in range(i + 1))
         result += '\n'
     return result
 
