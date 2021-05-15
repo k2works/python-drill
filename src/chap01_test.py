@@ -441,5 +441,5 @@ def traiangle_lb(n):
     >>> traiangle_lb(5)
     '*\\n**\\n***\\n****\\n*****\\n'
     """
-    row = lambda i: ''.join(['*' for _ in range(i + 1)]) + '\n'
-    return ''.join([row(i) for i in range(n)])
+    右側 = lambda i: ''.join(['*' for _ in range(i + 1)]) + '\n'
+    return ''.join([右側(i) for i in range(n)])
