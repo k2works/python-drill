@@ -458,12 +458,10 @@ def traiangle_rg(n):
     >>> traiangle_rg(5)
     '    *\\n   **\\n  ***\\n ****\\n*****\\n'
     """
-    result = ''
     def right(i): return ''.join(' ' for _ in range(n - i - 1))
     def left(i): return ''.join('*' for _ in range(i + 1))
     def triangle(i): return ''.join([row(i) for row in (right, left)]) + '\n'
-    result += ''.join([triangle(i) for i in range(n)]) 
-    return result
+    return ''.join([triangle(i) for i in range(n)]) 
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
