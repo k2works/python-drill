@@ -452,6 +452,20 @@ class TestTraiangleRb(unittest.TestCase):
 """
         self.assertEqual(traiangle_rg(5), expected)
 
+def traiangle_rg(n):
+    """ 右下側が直角の二等辺三角形を表示
+
+    >>> traiangle_rg(5)
+    '    *\\n   **\\n  ***\\n ****\\n*****\\n'
+    """
+    result = ''
+    for i in range(n):
+        for _ in range(n - i - 1):
+            result += ' '
+        for _ in range(i + 1):
+            result += '*'
+        result += '\n'
+    return result
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
