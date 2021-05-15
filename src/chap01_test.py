@@ -463,7 +463,7 @@ def traiangle_rg(n):
     """
     def 右側(i): return ''.join(' ' for _ in range(n - i - 1))
     def 左側(i): return ''.join('*' for _ in range(i + 1))
-    def 三角形(i): return ''.join([row(i) for row in (右側, 左側)]) + '\n'
+    def 三角形(i): return ''.join([行(i) for 行 in (右側, 左側)]) + '\n'
     高さnの三角形 = ''.join([三角形(i) for i in range(n)])
     return 高さnの三角形
 
