@@ -430,6 +430,21 @@ class TestTraiangleLb(unittest.TestCase):
 **
 ***
 ****
-*****            
+*****
 """
         self.assertEqual(traiangle_lb(5), expected)
+
+
+def traiangle_lb(n):
+    """ 左下側が直角の二等辺三角形を表示
+
+    >>> traiangle_lb(5)
+    '*\\n**\\n***\\n****\\n*****\\n'
+    """
+    result = ''
+    for i in range(n):
+        for j in range(i + 1):
+            result += '*'
+        result += '\n'
+    return result
+
