@@ -443,7 +443,5 @@ def traiangle_lb(n):
     """
     result = ''
     for i in range(n):
-        for j in range(i + 1):
-            result += '*'
-        result += '\n'
+        result += ''.join(['*' for _ in range(i + 1)]) + '\n'
     return result
