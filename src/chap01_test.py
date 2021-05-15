@@ -462,8 +462,8 @@ def traiangle_rg(n):
     def right(i): return ''.join(' ' for _ in range(n - i - 1))
     def left(i): return ''.join('*' for _ in range(i + 1))
     for i in range(n):
-        result += right(i)
-        result += left(i)
+        for row in (right, left):
+            result += row(i)
         result += '\n'
     return result
 
