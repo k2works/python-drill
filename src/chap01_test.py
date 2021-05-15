@@ -461,8 +461,10 @@ def traiangle_rg(n):
     result = ''
     def right(i): return ''.join(' ' for _ in range(n - i - 1))
     def left(i): return ''.join('*' for _ in range(i + 1))
+    def triangle(i): return ''.join([row(i) for row in (right, left)])
+ 
     for i in range(n):
-        result += ''.join([row(i) for row in (right, left)])
+        result += triangle(i)
         result += '\n'
     return result
 
