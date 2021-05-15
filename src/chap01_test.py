@@ -424,7 +424,7 @@ unittest.main(argv=[''], verbosity=2, exit=False)
 
 
 class TestTraiangleLb(unittest.TestCase):
-    def test_taiangle_lb(self):
+    def test_左下側が直角の二等辺三角形を表示(self):
         expected = """\
 *
 **
@@ -447,4 +447,3 @@ def traiangle_lb(n):
             result += '*'
         result += '\n'
     return result
-
