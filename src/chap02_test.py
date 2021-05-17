@@ -23,13 +23,10 @@ def total(tensu1, tensu2, tensu3, tensu4, tensu5):
     >>> total(32,68,72,54,92)
     '318,63.6'
     """
-    result = ''
     total = functools.reduce(
         lambda a, b: a+b, [tensu1, tensu2, tensu3, tensu4, tensu5])
     mean = total/5
-    result = str(total)
-    result += ','
-    result += str(mean)
+    result = ','.join([str(i) for i in [total, mean]])
 
     return result
 
