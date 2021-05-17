@@ -5,6 +5,7 @@ import doctest
 import unittest
 from unittest import result
 from unittest.case import skip
+import functools
 
 # %% [markdown]
 # ## データ構造と配列
@@ -23,9 +24,8 @@ def total(tensu1, tensu2, tensu3, tensu4, tensu5):
     '318,63.6'
     """
     result = ''
-    total = 0
-    for i in [tensu1, tensu2, tensu3, tensu4, tensu5]:
-        total += i
+    total = functools.reduce(
+        lambda a, b: a+b, [tensu1, tensu2, tensu3, tensu4, tensu5])
     result = str(total)
     result += ','
     result += str(total/5)
@@ -38,3 +38,4 @@ def total(tensu1, tensu2, tensu3, tensu4, tensu5):
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
+
