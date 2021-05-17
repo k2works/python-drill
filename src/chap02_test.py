@@ -15,17 +15,17 @@ import functools
 
 class TestTotal(unittest.TestCase):
     def test_5人の点数を読み込んで合計点平均点を返す(self):
-        self.assertEqual(total(32, 68, 72, 54, 92), '318,63.6')
+        self.assertEqual(total([32, 68, 72, 54, 92]), '318,63.6')
 
-def total(tensu1, tensu2, tensu3, tensu4, tensu5):
+def total(tensu_list):
     """ 5人の点数を読み込んで合計点平均点を返す
 
     >>> total(32,68,72,54,92)
     '318,63.6'
     """
     total = functools.reduce(
-        lambda a, b: a+b, [tensu1, tensu2, tensu3, tensu4, tensu5])
-    mean = total/5
+        lambda a, b: a+b, tensu_list)
+    mean = total/len(tensu_list)
     result = ','.join([str(i) for i in [total, mean]])
 
     return result
