@@ -26,9 +26,10 @@ def total(tensu1, tensu2, tensu3, tensu4, tensu5):
     result = ''
     total = functools.reduce(
         lambda a, b: a+b, [tensu1, tensu2, tensu3, tensu4, tensu5])
+    mean = total/5
     result = str(total)
     result += ','
-    result += str(total/5)
+    result += str(mean)
 
     return result
 
