@@ -24,14 +24,12 @@ def total(tensu1, tensu2, tensu3, tensu4, tensu5):
     """
     result = ''
     total = 0
-    total += tensu1
-    total += tensu2
-    total += tensu3
-    total += tensu4
-    total += tensu5
+    for i in [tensu1, tensu2, tensu3, tensu4, tensu5]:
+        total += i
     result = str(total)
     result += ','
     result += str(total/5)
+
     return result
 
 
