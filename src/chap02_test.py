@@ -53,9 +53,7 @@ def max_of(a: Sequence) -> Any:
     """
     maximum = a[0]
     def aがbより大きい(a, b): return True if a > b else False
-    for i in range(1, len(a)):
-        if aがbより大きい(a[i], maximum):
-            maximum = a[i]
+    maximum = [int(a[i]) for i in range(1, len(a)) if aがbより大きい(a[i], maximum)][0]
     return maximum
 
 
