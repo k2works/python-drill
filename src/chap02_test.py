@@ -21,7 +21,7 @@ class TestTotal(unittest.TestCase):
 def total(tensu_list):
     """ 5人の点数を読み込んで合計点平均点を返す
 
-    >>> total(32,68,72,54,92)
+    >>> total([32,68,72,54,92])
     '318,63.6'
     """
     total = functools.reduce(
