@@ -14,9 +14,11 @@ import functools
 # %% [markdown]
 # ### 配列の必要性
 
+
 class TestTotal(unittest.TestCase):
     def test_5人の点数を読み込んで合計点平均点を返す(self):
         self.assertEqual(total([32, 68, 72, 54, 92]), '318,63.6')
+
 
 def total(tensu_list):
     """ 5人の点数を読み込んで合計点平均点を返す
@@ -45,6 +47,7 @@ class TestMax(unittest.TestCase):
 
 def max_of(a: Sequence) -> Any:
     """ シーケンスaの要素の最大値を返却する
+
     >>> max_of([172, 153, 192, 140, 165])
     192
     """
@@ -54,6 +57,6 @@ def max_of(a: Sequence) -> Any:
             maximum = a[i]
     return maximum
 
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
-
