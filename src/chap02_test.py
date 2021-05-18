@@ -51,9 +51,8 @@ def max_of(a: Sequence) -> Any:
     >>> max_of([172, 153, 192, 140, 165])
     192
     """
-    maximum = a[0]
     def aがbより大きい(a, b): return True if a > b else False
-    maximum = [int(a[i]) for i in range(1, len(a)) if aがbより大きい(a[i], maximum)][0]
+    maximum = [int(a[i]) for i in range(1, len(a)) if aがbより大きい(a[i], a[0])][0]
     return maximum
 
 
