@@ -2,6 +2,7 @@
 # # データ構造と配列
 # %%
 import doctest
+from typing import Any, Sequence
 import unittest
 from unittest import result
 from unittest.case import skip
@@ -40,6 +41,18 @@ def total(tensu_list):
 class TestMax(unittest.TestCase):
     def test_シーケンスaの要素の最大値を返却する(self):
         self.assertEqual(max_of([172, 153, 192, 140, 165]), 192)
+
+
+def max_of(a: Sequence) -> Any:
+    """ シーケンスaの要素の最大値を返却する
+    >>> max_of([172, 153, 192, 140, 165])
+    192
+    """
+    maximum = a[0]
+    for i in range(1, len(a)):
+        if a[i] > maximum:
+            maximum = a[i]
+    return maximum
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
