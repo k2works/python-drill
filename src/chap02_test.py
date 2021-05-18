@@ -34,6 +34,13 @@ def total(tensu_list):
 # %% [markdown]
 # ## 配列
 
+# %% [markdown]
+# ### シーケンスの要素の最大値を表示する
+
+class TestMax(unittest.TestCase):
+    def test_シーケンスaの要素の最大値を返却する(self):
+        self.assertEqual(max_of([172, 153, 192, 140, 165]), 192)
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
 
