@@ -2,7 +2,7 @@
 # # データ構造と配列
 # %%
 import doctest
-from typing import Any, Sequence
+from typing import Any, MutableSequence, Sequence
 import unittest
 from unittest import result
 from unittest.case import skip
@@ -62,6 +62,13 @@ class TestReverseArray(unittest.TestCase):
         reverse_array(a)
         self.assertEqual(a, [7, 6, 9, 3, 1, 5, 2])
 
+
+def reverse_array(a: MutableSequence) -> None:
+    """ ミュータブルなシーケンスの要素の並びを反転
+    """
+    n = len(a)
+    for i in range(n // 2):
+        a[i], a[n - i - 1] = a[n - i - 1], a[i]
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
