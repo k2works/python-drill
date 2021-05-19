@@ -68,9 +68,9 @@ def reverse_array(a: MutableSequence) -> None:
     """
     n = len(a)
     def 両端の数値を交換した配列(a, n, i): return a[n - i - 1], a[i]
-    def シーケンスの要素の並びを反転(a, n, i): a[i], a[n - i - 1] = 両端の数値を交換した配列(a, n, i)
+    def 配列の要素の並びを反転(a, n, i): a[i], a[n - i - 1] = 両端の数値を交換した配列(a, n, i)
 
-    [シーケンスの要素の並びを反転(a, n, i) for i in range(n // 2)]
+    [配列の要素の並びを反転(a, n, i) for i in range(n // 2)]
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
