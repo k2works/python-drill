@@ -63,14 +63,14 @@ class TestReverseArray(unittest.TestCase):
         self.assertEqual(a, [7, 6, 9, 3, 1, 5, 2])
 
 
-def reverse_array(a: MutableSequence) -> None:
+def reverse_array(array: MutableSequence) -> None:
     """ ミュータブルなシーケンスの要素の並びを反転
     """
-    n = len(a)
-    def 両端の数値を交換した配列(a, n, i): return a[n - i - 1], a[i]
-    def 配列の要素の並びを反転(a, n, i): a[i], a[n - i - 1] = 両端の数値を交換した配列(a, n, i)
+    array_len = len(array)
+    def 両端の数値を交換した配列(array, n, i): return array[n - i - 1], array[i]
+    def 配列の要素の並びを反転(array, n, i): array[i], array[n - i - 1] = 両端の数値を交換した配列(array, array_len, i)
 
-    [配列の要素の並びを反転(a, n, i) for i in range(n // 2)]
+    [配列の要素の並びを反転(array, array_len, i) for i in range(array_len // 2)]
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
