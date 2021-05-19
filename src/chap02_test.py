@@ -66,11 +66,12 @@ class TestReverseArray(unittest.TestCase):
 def reverse_array(array: MutableSequence) -> None:
     """ ミュータブルなシーケンスの要素の並びを反転
     """
-    array_len = len(array)
+    配列の長さ = len(array)
+    配列の半分の長さ = (配列の長さ // 2)
     def 両端の数値を交換した配列(array, n, i): return array[n - i - 1], array[i]
-    def 配列の要素の並びを反転(array, n, i): array[i], array[n - i - 1] = 両端の数値を交換した配列(array, array_len, i)
+    def 配列の要素の並びを反転(array, n, i): array[i], array[n - i - 1] = 両端の数値を交換した配列(array, 配列の長さ, i)
 
-    [配列の要素の並びを反転(array, array_len, i) for i in range(array_len // 2)]
+    [配列の要素の並びを反転(array, 配列の長さ, i) for i in range(配列の半分の長さ)]
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
