@@ -53,6 +53,15 @@ def max_of(a: Sequence) -> Any:
     """
     return max(a)
 
+# %% [markdown]
+# ### ミュータブルなシーケンスの要素の並びを反転
+
+class TestReverseArray(unittest.TestCase):
+    def test_ミュータブルなシーケンスaの要素の並びを反転(self):
+        a = [2, 5, 1, 3, 9, 6, 7]
+        reverse_array(a)
+        self.assertEqual(a, [7, 6, 9, 3, 1, 5, 2])
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
