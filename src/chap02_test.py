@@ -70,7 +70,7 @@ class TestReverseArray(unittest.TestCase):
         self.assertEqual(result, [7, 6, 9, 3, 1, 5, 2])
 
 
-def reverse_array(配列):
+def reverse_array(配列: MutableSequence) -> None:
     配列の長さ = len(配列)
     配列の半分の長さ = (配列の長さ // 2)
     def 両端の数値を交換した配列(配列, n, i): return 配列[n - i - 1], 配列[i]
@@ -85,7 +85,7 @@ def reverse_array_mutable(配列: MutableSequence) -> None:
     reverse_array(配列)
 
 
-def reverse_array_imutable(a: MutableSequence) -> None:
+def reverse_array_imutable(a: MutableSequence) -> MutableSequence:
     """ イミュータブルなシーケンスの要素の並びを反転
     """
     配列 = a[:]
