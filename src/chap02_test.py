@@ -70,26 +70,26 @@ class TestReverseArray(unittest.TestCase):
         self.assertEqual(result, [7, 6, 9, 3, 1, 5, 2])
 
 
-def reverse_array_mutable(配列: MutableSequence) -> None:
-    """ ミュータブルなシーケンスの要素の並びを反転
-    """
+def reverse_array(配列):
     配列の長さ = len(配列)
     配列の半分の長さ = (配列の長さ // 2)
     def 両端の数値を交換した配列(配列, n, i): return 配列[n - i - 1], 配列[i]
     def 配列の要素の並びを反転(配列, n, i): 配列[i], 配列[n - i - 1] = 両端の数値を交換した配列(配列, 配列の長さ, i)
 
     [配列の要素の並びを反転(配列, 配列の長さ, i) for i in range(配列の半分の長さ)]
+
+
+def reverse_array_mutable(配列: MutableSequence) -> None:
+    """ ミュータブルなシーケンスの要素の並びを反転
+    """
+    reverse_array(配列)
+
 
 def reverse_array_imutable(a: MutableSequence) -> None:
     """ イミュータブルなシーケンスの要素の並びを反転
     """
     配列 = a[:]
-    配列の長さ = len(配列)
-    配列の半分の長さ = (配列の長さ // 2)
-    def 両端の数値を交換した配列(配列, n, i): return 配列[n - i - 1], 配列[i]
-    def 配列の要素の並びを反転(配列, n, i): 配列[i], 配列[n - i - 1] = 両端の数値を交換した配列(配列, 配列の長さ, i)
-
-    [配列の要素の並びを反転(配列, 配列の長さ, i) for i in range(配列の半分の長さ)]
+    reverse_array(配列)
     return 配列
 
 doctest.testmod(verbose=True)
