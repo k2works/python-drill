@@ -59,7 +59,7 @@ def max_of(a: Sequence) -> Any:
 class TestReverseArray(unittest.TestCase):
     def test_ミュータブルなシーケンスaの要素の並びを反転(self):
         a = [2, 5, 1, 3, 9, 6, 7]
-        reverse_array(a)
+        reverse_array_mutable(a)
         self.assertEqual(a, [7, 6, 9, 3, 1, 5, 2])
 
     def test_イミュータブルなシーケンスaの要素の並びを反転(self):
@@ -70,7 +70,7 @@ class TestReverseArray(unittest.TestCase):
         self.assertEqual(result, [7, 6, 9, 3, 1, 5, 2])
 
 
-def reverse_array(配列: MutableSequence) -> None:
+def reverse_array_mutable(配列: MutableSequence) -> None:
     """ ミュータブルなシーケンスの要素の並びを反転
     """
     配列の長さ = len(配列)
