@@ -93,7 +93,7 @@ def reverse_array_imutable(a: MutableSequence) -> MutableSequence:
     return 配列
 
 # %% [markdown]
-# ### 整数値をr進数に変換
+# ### 基数変換
 
 
 class TestCardConv(unittest.TestCase):
