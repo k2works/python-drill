@@ -106,16 +106,17 @@ def card_conv(x: int, r: int) -> str:
     >>> card_conv(29, 2)
     '11101'
     """
-    d = ''
-    dchar = '0123456789ACDEFGHIJKLMNOPQRSTUVWXYZ'
     def 反転して返却(d): return d[::-1]
-    def 該当文字を取り出して連結(x, r, d):
+
+    def 該当文字を取り出して連結(x, r):
+        d = ''
+        dchar = '0123456789ACDEFGHIJKLMNOPQRSTUVWXYZ'
         while x > 0:
             d += dchar[x % r]
             x //= r 
         return d
 
-    d = 該当文字を取り出して連結(x, r, d)
+    d = 該当文字を取り出して連結(x, r)
     return 反転して返却(d)
 
 doctest.testmod(verbose=True)
