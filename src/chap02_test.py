@@ -108,12 +108,13 @@ def card_conv(x: int, r: int) -> str:
     """
     d = ''
     dchar = '0123456789ACDEFGHIJKLMNOPQRSTUVWXYZ'
+    def 反転して返却(d): return d[::-1]
 
     while x > 0:
         d += dchar[x % r]
         x //= r 
 
-    return d[::-1]
+    return 反転して返却(d)
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
