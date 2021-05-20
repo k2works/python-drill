@@ -100,5 +100,20 @@ class TestCardConv(unittest.TestCase):
     def test_整数値xをr進数に変換した数値を表す文字列を返却(self):
         self.assertEqual(card_conv(29, 2), '11101')
 
+def card_conv(x: int, r: int) -> str:
+    """ 整数値xをr進数に変換した数値を表す文字列を返却
+
+    >>> card_conv(29, 2)
+    '11101'
+    """
+    d = ''
+    dchar = '0123456789ACDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    while x > 0:
+        d += dchar[x % r]
+        x //= r 
+
+    return d[::-1]
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
