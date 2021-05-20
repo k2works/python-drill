@@ -116,8 +116,8 @@ def card_conv(x: int, r: int) -> str:
             x //= r 
         return d
 
-    d = 該当文字を取り出して連結(x, r)
-    return 反転して返却(d)
+    連結文字列 = 該当文字を取り出して連結(x, r)
+    return 反転して返却(連結文字列)
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
