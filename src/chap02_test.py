@@ -92,5 +92,13 @@ def reverse_array_imutable(a: MutableSequence) -> MutableSequence:
     reverse_array(配列)
     return 配列
 
+# %% [markdown]
+# ### 整数値をr進数に変換
+
+
+class TestCardConv(unittest.TestCase):
+    def test_整数値xをr進数に変換した数値を表す文字列を返却(self):
+        self.assertEqual(card_conv(29, 2), '11101')
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
