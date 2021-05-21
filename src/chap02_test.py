@@ -124,7 +124,24 @@ def card_conv(x: int, r: int) -> str:
 
 class TestPrime(unittest.TestCase):
     def test_x以下の素数を列挙_1(self):
-        self.assertEqual(prime_1(1000), 78822)
+        self.assertEqual(prime_1(1000), 78022)
+
+def prime_1(x: int) -> int:
+    """ x以下の素数を列挙（第1版）
+
+    >>> prime_1(1000)
+    78022
+    """
+    counter = 0
+    for n in range(2, x+1):
+        for i in range(2, n):
+            counter += 1
+            if n % i == 0:
+                break
+        else:
+            print(n)
+
+    return counter
 
 
 doctest.testmod(verbose=True)
