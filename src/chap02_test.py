@@ -129,6 +129,8 @@ class TestPrime(unittest.TestCase):
     def test_x以下の素数を列挙_2(self):
         self.assertEqual(prime_2(1000), 14622)
 
+    def test_x以下の素数を列挙_3(self):
+        self.assertEqual(prime_3(1000), 3774)
 
 def prime_1(x: int) -> int:
     """ x以下の素数を列挙（第1版）
@@ -163,6 +165,34 @@ def prime_2(x: int) -> int:
             print(n)
             prime[ptr] = n
             ptr += 1
+
+    return counter
+
+
+def prime_3(x: int) -> int:
+    """ x以下の素数を列挙（第3版）
+    """
+    counter = 0
+    ptr = 0
+    prime = [None] * 500
+
+    prime[ptr] = 2
+    ptr += 1
+    prime[ptr] = 3
+    ptr += 1
+
+    for n in range(5, 1001, 2):
+        i = 1
+        while prime[i] * prime[i] <= n:
+            counter += 2
+            if n % prime[i] == 0:
+                break
+            i += 1
+        else:
+            print(n)
+            prime[ptr] = n
+            ptr += 1
+            counter += 1
 
     return counter
 
