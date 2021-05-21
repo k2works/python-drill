@@ -119,5 +119,13 @@ def card_conv(x: int, r: int) -> str:
     連結文字列 = 該当文字を取り出して連結(x, r)
     return 反転して返却(連結文字列)
 
+# %% [markdown]
+# ### 素数の列挙
+
+class TestPrime(unittest.TestCase):
+    def test_x以下の素数を列挙_1(self):
+        self.assertEqual(prime_1(1000), 78822)
+
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
