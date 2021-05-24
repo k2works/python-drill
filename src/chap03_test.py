@@ -22,6 +22,7 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(ssearch_while(['DTS', 'AAC', 'FLAC'], 'DTS'), 0)
 
     def test_シーケンスaからkeyと等価な要素を線形探索_2(self):
+        self.assertEqual(ssearch_for([6, 4, 3, 2, 1, 2, 8], 9), -1)
         self.assertEqual(ssearch_for([6, 4, 3, 2, 1, 2, 8], 2), 3)
         self.assertEqual(ssearch_for([12.7, 3.14, 6.4, 7.2, 'End'], 6.4), 2)
         self.assertEqual(ssearch_for((4, 7, 5.6, 2, 3.14, 1), 5.6), 2)
@@ -49,11 +50,10 @@ def ssearch_for(a: Sequence, key: Any) -> int:
     >>> ssearch_for([6, 4, 3, 2, 1, 2, 8], 2)
     3
     """
-    def シーケンス要素とキーが同じ(a, key): return True if a[i] == key else False
-    for i in range(len(a)):
-        if シーケンス要素とキーが同じ(a, key):
-            return i
-    return -1
+    def シーケンス要素とキーが同じ(a, key): return True if a == key else False
+    ret = [i for i in range(len(a)) if シーケンス要素とキーが同じ(a[i], key)]
+    if ret == []: return -1
+    return ret[0]
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
