@@ -51,11 +51,10 @@ def ssearch_for(a: Sequence, key: Any) -> int:
     3
     """
     def シーケンス要素とキーが同じ(a, key): return True if a == key else False
+    def 結果を返す(list): return -1 if not list else list[0]
+
     ret = [i for i in range(len(a)) if シーケンス要素とキーが同じ(a[i], key)]
-    if not ret:
-        return -1
-    else:
-        return ret[0]
+    return 結果を返す(ret)
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
