@@ -43,5 +43,16 @@ def ssearch_while(a: Sequence, key: Any) -> int:
             return i
         i += 1
 
+
+def ssearch_for(a: Sequence, key: Any) -> int:
+    """シーケンスaからkeyと等価な要素を線形探索(for文)
+    >>> ssearch_for([6, 4, 3, 2, 1, 2, 8], 2)
+    3
+    """
+    for i in range(len(a)):
+        if a[i] == key:
+            return i
+    return -1
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
