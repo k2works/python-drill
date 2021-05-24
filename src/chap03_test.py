@@ -49,8 +49,9 @@ def ssearch_for(a: Sequence, key: Any) -> int:
     >>> ssearch_for([6, 4, 3, 2, 1, 2, 8], 2)
     3
     """
+    def シーケンス要素とキーが同じ(a, key): return True if a[i] == key else False
     for i in range(len(a)):
-        if a[i] == key:
+        if シーケンス要素とキーが同じ(a, key):
             return i
     return -1
 
