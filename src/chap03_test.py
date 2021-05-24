@@ -27,11 +27,13 @@ def ssearch_while(a: Sequence, key: Any) -> int:
     3
     """
     i = 0
+    def シーケンスと同じ長さ(a, i): return True if i == len(a) else False
+    def シーケンス要素とキーが同じ(a, key): return True if a[i] == key else False
 
     while True:
-        if i == len(a):
+        if シーケンスと同じ長さ(a, i):
             return -1
-        if a[i] == key:
+        if シーケンス要素とキーが同じ(a, key):
             return i
         i += 1
 
