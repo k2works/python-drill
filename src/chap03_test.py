@@ -7,6 +7,7 @@ import unittest
 from unittest import result
 from unittest.case import skip
 from typing import Any, MutableSequence, Sequence
+import copy
 
 # %% [markdown]
 # ## 線形探索
@@ -60,9 +61,25 @@ def ssearch_for(a: Sequence, key: Any) -> int:
 # ### 線形探索(番兵法)
 
 
-class TestSearchSentinel(unittest.TestCase):
+class TestSsearchSentinel(unittest.TestCase):
     def test_シーケンスからキーに一致する要素を線形検索_番兵法(self):
-        self.assertEqual([6, 4, 3, 2, 1, 2, 8], 2)
+        self.assertEqual(ssearch_sentinel([6, 4, 3, 2, 1, 2, 8], 2), 3)
+
+def ssearch_sentinel(seq: Sequence, key: Any) -> int:
+    """シーケンスseqからkeyと一致する要素を線形探索（番兵法）
+
+    >>> ssearch_sentinel([6, 4, 3, 2, 1, 2, 8], 2)
+    3
+    """
+    a = copy.deepcopy(seq)
+    a.append(key)
+
+    i = 0
+    while True:
+        if a[i] == key:
+            break
+        i += 1
+    return -1 if i == len(seq) else i
 
 
 doctest.testmod(verbose=True)
