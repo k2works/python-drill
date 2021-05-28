@@ -73,13 +73,15 @@ def ssearch_sentinel(seq: Sequence, key: Any) -> int:
     """
     a = copy.deepcopy(seq)
     a.append(key)
+    def キーと一致する(v, key): return True if v == key else False
+    def シーケンスの最後か判定する(i, seq): return -1 if i == len(seq) else i
 
     i = 0
     while True:
-        if a[i] == key:
+        if キーと一致する(a[i], key):
             break
         i += 1
-    return -1 if i == len(seq) else i
+    return シーケンスの最後か判定する(i, seq)
 
 
 doctest.testmod(verbose=True)
