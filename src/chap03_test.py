@@ -74,9 +74,12 @@ def ssearch_sentinel(seq: Sequence, key: Any) -> int:
     def キーと一致する(v, key): return True if v == key else False
     def シーケンスの最後か判定する(i, seq): return -1 if i == len(seq) else i
 
-    シーケンスのコピー = copy.deepcopy(seq)
-    シーケンスのコピー.append(key)
-    番兵を追加したシーケンスのコピー = シーケンスのコピー
+    def シーケンスのコピー(seq, key):
+        tmp = copy.deepcopy(seq)
+        tmp.append(key)
+        return tmp
+
+    番兵を追加したシーケンスのコピー = シーケンスのコピー(seq, key)
     i = 0
     while True:
         if キーと一致する(番兵を追加したシーケンスのコピー[i], key):
