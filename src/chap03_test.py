@@ -56,5 +56,14 @@ def ssearch_for(a: Sequence, key: Any) -> int:
     検索結果 = [i for i in range(len(a)) if シーケンス要素とキーが同じ(a[i], key)]
     return 結果を返す(検索結果)
 
+# %% [markdown]
+# ### 線形探索(番兵法)
+
+
+class TestSearchSentinel(unittest.TestCase):
+    def test_シーケンスからキーに一致する要素を線形検索_番兵法(self):
+        self.assertEqual([6, 4, 3, 2, 1, 2, 8], 2)
+
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
