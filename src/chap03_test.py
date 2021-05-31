@@ -15,6 +15,7 @@ import copy
 # %% [markdown]
 # ### 線形探索
 
+
 class TestSearch(unittest.TestCase):
     def test_シーケンスaからkeyと等価な要素を線形探索_1(self):
         self.assertEqual(ssearch_while([6, 4, 3, 2, 1, 2, 8], 2), 3)
@@ -28,6 +29,7 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(ssearch_for([12.7, 3.14, 6.4, 7.2, 'End'], 6.4), 2)
         self.assertEqual(ssearch_for((4, 7, 5.6, 2, 3.14, 1), 5.6), 2)
         self.assertEqual(ssearch_for(['DTS', 'AAC', 'FLAC'], 'DTS'), 0)
+
 
 def ssearch_while(a: Sequence, key: Any) -> int:
     """シーケンスaからkeyと等価な要素を線形探索(while文)
@@ -65,6 +67,7 @@ class TestSsearchSentinel(unittest.TestCase):
     def test_シーケンスからキーに一致する要素を線形検索_番兵法(self):
         self.assertEqual(ssearch_sentinel([6, 4, 3, 2, 1, 2, 8], 2), 3)
 
+
 def ssearch_sentinel(seq: Sequence, key: Any) -> int:
     """シーケンスseqからkeyと一致する要素を線形探索（番兵法）
 
@@ -90,6 +93,7 @@ def ssearch_sentinel(seq: Sequence, key: Any) -> int:
 # %% [markdown]
 # ### 二分探索
 
+
 class TestBsearch(unittest.TestCase):
     def test_シーケンスからキーに一致する要素を二分検索(self):
         self.assertEqual(bsearch([1, 2, 3, 5, 7, 8, 9], 5), 3)
@@ -104,19 +108,18 @@ def bsearch(a: Sequence, key: Any) -> int:
     3
     """
     def 中間位置の値は検索値と一致する(中間位置の値, 検索値): return 中間位置の値 == 検索値
-    def 開始位置を一つ進める(中間位置):  return 中間位置 + 1
+    def 開始位置を一つ進める(中間位置): return 中間位置 + 1
     def 開始位置を一つ戻す(中間位置): return 中間位置 - 1
     def 検索終了(開始位置, 終了位置): 開始位置 > 終了位置
 
     def 開始位置と終了位置を調整する(中間位置の値, 検索値, 開始位置, 終了位置):
         def 中間位置の値は検索値より少ない(中間位置の値, 検索値): return 中間位置の値 < 検索値
-        
+
         if 中間位置の値は検索値より少ない(中間位置の値, 検索値):
             開始位置 = 開始位置を一つ進める(中間位置)
         else:
             終了位置 = 開始位置を一つ戻す(中間位置)
         return 開始位置, 終了位置
-
 
     開始位置 = 0
     終了位置 = len(a) - 1
@@ -126,9 +129,9 @@ def bsearch(a: Sequence, key: Any) -> int:
         if 中間位置の値は検索値と一致する(a[中間位置], key):
             return 中間位置
 
-        開始位置, 終了位置 = 開始位置と終了位置を調整する(a[中間位置], key, 開始位置,終了位置)
+        開始位置, 終了位置 = 開始位置と終了位置を調整する(a[中間位置], key, 開始位置, 終了位置)
 
-        if 検索終了(開始位置,終了位置):
+        if 検索終了(開始位置, 終了位置):
             break
     return -1
 
