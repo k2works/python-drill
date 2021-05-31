@@ -92,7 +92,29 @@ def ssearch_sentinel(seq: Sequence, key: Any) -> int:
 
 class TestBsearch(unittest.TestCase):
     def test_シーケンスからキーに一致する要素を二分検索(self):
-        self.assertEqual(bsearch([1, 2, 3, 4, 5, 7, 8, 9], 5), 3)
+        self.assertEqual(bsearch([1, 2, 3, 5, 7, 8, 9], 5), 3)
+
+
+def bsearch(a: Sequence, key: Any) -> int:
+    """シーケンスaからkeyと一致する要素を二分検索
+
+    >>> bsearch([1, 2, 3, 5, 7, 8, 9], 5)
+    3
+    """
+    pl = 0
+    pr = len(a) - 1
+
+    while True:
+        pc = (pl + pr) // 2
+        if a[pc] == key:
+            return pc
+        elif a[pc] < key:
+            pl = pc + 1
+        else:
+            pr = pc - 1
+        if pl > pr:
+            break
+    return -1
 
 
 doctest.testmod(verbose=True)
