@@ -87,6 +87,13 @@ def ssearch_sentinel(seq: Sequence, key: Any) -> int:
         i += 1
     return シーケンスの最後か判定する(i, seq)
 
+# %% [markdown]
+# ### 二分探索
+
+class TestBsearch(unittest.TestCase):
+    def test_シーケンスからキーに一致する要素を二分検索(self):
+        self.assertEqual(bsearch([1, 2, 3, 4, 5, 7, 8, 9], 5), 3)
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
