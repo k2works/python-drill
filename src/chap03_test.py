@@ -93,6 +93,8 @@ def ssearch_sentinel(seq: Sequence, key: Any) -> int:
 class TestBsearch(unittest.TestCase):
     def test_シーケンスからキーに一致する要素を二分検索(self):
         self.assertEqual(bsearch([1, 2, 3, 5, 7, 8, 9], 5), 3)
+        self.assertEqual(bsearch([1, 2, 3, 5, 7, 8, 9], 7), 4)
+        self.assertEqual(bsearch([1, 2, 3, 5, 7, 8, 9], 3), 2)
 
 
 def bsearch(a: Sequence, key: Any) -> int:
@@ -101,21 +103,24 @@ def bsearch(a: Sequence, key: Any) -> int:
     >>> bsearch([1, 2, 3, 5, 7, 8, 9], 5)
     3
     """
-    開始位置 = 0
-    終了位置 = len(a) - 1
-
     def 中間位置の値は検索値と一致する(中間位置の値, 検索値): return 中間位置の値 == 検索値
     def 中間位置の値は検索値より少ない(中間位置の値, 検索値): return 中間位置の値 < 検索値
+    def 開始位置を一つ進める(中間位置):  return 中間位置 + 1
+    def 開始位置を一つ戻す(中間位置): return 中間位置 - 1
+    def 検索終了(開始位置, 終了位置): 開始位置 > 終了位置
+
+    開始位置 = 0
+    終了位置 = len(a) - 1
 
     while True:
         中間位置 = (開始位置 + 終了位置) // 2
         if 中間位置の値は検索値と一致する(a[中間位置], key):
             return 中間位置
         elif 中間位置の値は検索値より少ない(a[中間位置], key):
-            開始位置 = 中間位置 + 1
+            開始位置 = 開始位置を一つ進める(中間位置)
         else:
-            終了位置 = 中間位置 - 1
-        if 開始位置 > 終了位置:
+            終了位置 = 開始位置を一つ戻す(中間位置)
+        if 検索終了(開始位置,終了位置):
             break
     return -1
 
