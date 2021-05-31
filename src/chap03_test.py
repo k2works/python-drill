@@ -101,18 +101,18 @@ def bsearch(a: Sequence, key: Any) -> int:
     >>> bsearch([1, 2, 3, 5, 7, 8, 9], 5)
     3
     """
-    pl = 0
-    pr = len(a) - 1
+    開始位置 = 0
+    終了位置 = len(a) - 1
 
     while True:
-        pc = (pl + pr) // 2
-        if a[pc] == key:
-            return pc
-        elif a[pc] < key:
-            pl = pc + 1
+        中間位置 = (開始位置 + 終了位置) // 2
+        if a[中間位置] == key:
+            return 中間位置
+        elif a[中間位置] < key:
+            開始位置 = 中間位置 + 1
         else:
-            pr = pc - 1
-        if pl > pr:
+            終了位置 = 中間位置 - 1
+        if 開始位置 > 終了位置:
             break
     return -1
 
