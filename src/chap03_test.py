@@ -2,6 +2,7 @@
 # %% [markdown]
 # # 探索
 # %%
+import hashlib
 import doctest
 import unittest
 from unittest import result
@@ -147,6 +148,48 @@ class TestChainedHash(unittest.TestCase):
 
     def test_search(self):
         self.assertEqual(self.hash.search(1), '赤尾')
+
+
+class Node:
+    def __init__(self, key: Any, value: Any, next: Any) -> None:
+        self.key = key
+        self.value = value
+        self.next = next
+
+
+class ChainedHash:
+    def __init__(self, capacity: int) -> None:
+        self.capacity = capacity
+        self.table = [None] * self.capacity
+
+    def hash_value(self, key: Any) -> int:
+        if isinstance(key, int):
+            return key % self.capacity
+        return (int(hashlib.sha256(str(key).encode())).hexdigest(), 16)
+
+    def search(self, key: Any) -> Any:
+        hash = self.hash_value(key)
+        p = self.table[hash]
+
+        while p is not None:
+            if p.key == key:
+                return p.value
+            p = p.next
+
+        return None
+
+    def add(self, key: Any, value: Any) -> bool:
+        hash = self.hash_value(key)
+        p = self.table[hash]
+
+        while p is not None:
+            if p.key == key:
+                return False
+            p = p.next
+
+        temp = Node(key, value, self.table[hash])
+        self.table[hash] = temp
+        return True
 
 
 doctest.testmod(verbose=True)
