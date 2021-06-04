@@ -136,5 +136,18 @@ def bsearch(a: Sequence, key: Any) -> int:
     return -1
 
 
+# %% [markdown]
+# ### ハッシュ法
+
+class TestChainedHash(unittest.TestCase):
+
+    def setUp(self):
+        self.hash = ChainedHash(13)
+        self.hash.add(1, '赤尾')
+
+    def test_search(self):
+        self.assertEqual(self.hash.search(1), '赤尾')
+
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
