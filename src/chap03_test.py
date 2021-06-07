@@ -240,6 +240,17 @@ class ChainedHash:
             p = p.next
         return False
 
+    def dump(self) -> str:
+        result = ''
+        for i in range(self.capacity):
+            p = self.table[i]
+            result += f'{i}'
+            while p is not None:
+                result += f'   -> {p.key} ({p.value})'
+                p = p.next
+            result += '\n'
+        return result
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
