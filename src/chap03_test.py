@@ -149,6 +149,10 @@ class TestChainedHash(unittest.TestCase):
     def test_search(self):
         self.assertEqual(self.hash.search(1), '赤尾')
 
+    def test_add(self):
+        self.hash.add(100, '山田')
+        self.assertEqual(self.hash.search(100), '山田')
+
 
 class Node:
     def __init__(self, key: Any, value: Any, next: Any) -> None:
