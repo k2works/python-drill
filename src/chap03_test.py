@@ -180,10 +180,13 @@ class TestChainedHash(unittest.TestCase):
 12   -> 12 (鈴木)
 """
         actual = self.hash.dump()
-        self.assertEqual(self.hash.dump(), expected)
+        self.assertEqual(actual, expected)
 
 
 class Node:
+    """ハッシュを構成するノード
+    """
+
     def __init__(self, key: Any, value: Any, next: Any) -> None:
         self.key = key
         self.value = value
@@ -191,6 +194,17 @@ class Node:
 
 
 class ChainedHash:
+    """チェイン法を実現するハッシュクラス
+    >>> hash = ChainedHash(13)
+    >>> hash.add(1, '赤尾')
+    True
+    >>> hash.search(1)
+    '赤尾'
+    >>> hash.remove(1)
+    True
+    >>> hash.search(1)
+    """
+
     def __init__(self, capacity: int) -> None:
         self.capacity = capacity
         self.table = [None] * self.capacity
