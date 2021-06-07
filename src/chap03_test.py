@@ -145,6 +145,11 @@ class TestChainedHash(unittest.TestCase):
     def setUp(self):
         self.hash = ChainedHash(13)
         self.hash.add(1, '赤尾')
+        self.hash.add(5, '武田')
+        self.hash.add(10, '小野')
+        self.hash.add(12, '鈴木')
+        self.hash.add(14, '神崎')
+
 
     def test_search(self):
         self.assertEqual(self.hash.search(1), '赤尾')
@@ -157,6 +162,25 @@ class TestChainedHash(unittest.TestCase):
         self.hash.add(100, '山田')
         self.hash.remove(100)
         self.assertEqual(self.hash.search(100), None)
+
+    def test_dump(self):
+        expected = """\
+0
+1   -> 14 (神崎)   -> 1 (赤尾)
+2
+3
+4
+5   -> 5 (武田)
+6
+7
+8
+9
+10   -> 10 (小野)
+11
+12   -> 12 (鈴木)
+"""
+        actual = self.hash.dump()
+        self.assertEqual(self.hash.dump(), expected)
 
 
 class Node:
