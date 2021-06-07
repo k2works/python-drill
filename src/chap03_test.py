@@ -200,6 +200,22 @@ class ChainedHash:
         self.table[hash] = temp
         return True
 
+    def remove(self, key: Any) -> bool:
+        hash = self.hash_value(key)
+        p = self.table[hash]
+        pp = None
+
+        while p is not Node:
+            if p.key == key:
+                if pp is None:
+                    self.table[hash] = p.next
+                else:
+                    pp.next = p.next
+                return True
+            pp = p
+            p = p.next
+        return False
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
