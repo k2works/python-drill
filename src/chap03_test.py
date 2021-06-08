@@ -206,13 +206,19 @@ class ChainedHash:
     """
 
     def __init__(self, capacity: int) -> None:
-        self.capacity = capacity
-        self.table = [None] * self.capacity
+        def ハッシュテーブルを作る(capacity):
+            self.capacity = capacity
+            self.table = [None] * self.capacity
+
+        ハッシュテーブルを作る(capacity)
 
     def hash_value(self, key: Any) -> int:
-        if isinstance(key, int):
-            return key % self.capacity
-        return (int(hashlib.sha256(str(key).encode())).hexdigest(), 16)
+        def 整数型または文字列型のキーを基にハッシュ値を計算する(key):
+            if isinstance(key, int):
+                return key % self.capacity
+            return (int(hashlib.sha256(str(key).encode())).hexdigest(), 16)
+
+        return 整数型または文字列型のキーを基にハッシュ値を計算する(key)
 
     def search(self, key: Any) -> Any:
         hash = self.hash_value(key)
