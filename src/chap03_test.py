@@ -212,15 +212,12 @@ class ChainedHash:
         ハッシュテーブルを作る(capacity)
 
     def __ハッシュ値(self, key):
-        def hash_value(key: Any) -> int:
-            def 整数型または文字列型のキーを基にハッシュ値を計算する(key):
-                if isinstance(key, int):
-                    return key % self.capacity
-                return (int(hashlib.sha256(str(key).encode())).hexdigest(), 16)
+        def 整数型または文字列型のキーを基にハッシュ値を計算する(key):
+            if isinstance(key, int):
+                return key % self.capacity
+            return (int(hashlib.sha256(str(key).encode())).hexdigest(), 16)
 
-            return 整数型または文字列型のキーを基にハッシュ値を計算する(key)
-
-        return hash_value(key)
+        return 整数型または文字列型のキーを基にハッシュ値を計算する(key)
 
     def __キーからノードを取得する(self, key: Any) -> Node:
         return self.table[self.__ハッシュ値(key)]
