@@ -220,9 +220,11 @@ class ChainedHash:
 
         return 整数型または文字列型のキーを基にハッシュ値を計算する(key)
 
+    def __hash(self, key):
+        return self.hash_value(key)
+
     def search(self, key: Any) -> Any:
-        hash = self.hash_value(key)
-        p = self.table[hash]
+        p = self.table[self.__hash(key)]
 
         while p is not None:
             if p.key == key:
@@ -232,27 +234,25 @@ class ChainedHash:
         return None
 
     def add(self, key: Any, value: Any) -> bool:
-        hash = self.hash_value(key)
-        p = self.table[hash]
+        p = self.table[self.__hash(key)]
 
         while p is not None:
             if p.key == key:
                 return False
             p = p.next
 
-        temp = Node(key, value, self.table[hash])
-        self.table[hash] = temp
+        temp = Node(key, value, self.table[self.__hash(key)])
+        self.table[self.__hash(key)] = temp
         return True
 
     def remove(self, key: Any) -> bool:
-        hash = self.hash_value(key)
-        p = self.table[hash]
+        p = self.table[self.__hash(key)]
         pp = None
 
         while p is not Node:
             if p.key == key:
                 if pp is None:
-                    self.table[hash] = p.next
+                    self.table[self.__hash(key)] = p.next
                 else:
                     pp.next = p.next
                 return True
