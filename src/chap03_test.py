@@ -150,7 +150,6 @@ class TestChainedHash(unittest.TestCase):
         self.hash.add(12, '鈴木')
         self.hash.add(14, '神崎')
 
-
     def test_search(self):
         self.assertEqual(self.hash.search(1), '赤尾')
 
@@ -226,6 +225,10 @@ class ChainedHash:
     def __キーからノードを取得する(self, key: Any) -> Node:
         return self.table[self.__ハッシュ値(key)]
 
+    def __ハッシュテーブルを更新する(self, key: Any, value: Any) -> None:
+        temp = Node(key, value, self.table[self.__ハッシュ値(key)])
+        self.table[self.__ハッシュ値(key)] = temp
+
     def search(self, key: Any) -> Any:
         node = self.__キーからノードを取得する(key)
 
@@ -244,8 +247,7 @@ class ChainedHash:
                 return False
             node = node.next
 
-        temp = Node(key, value, self.table[self.__ハッシュ値(key)])
-        self.table[self.__ハッシュ値(key)] = temp
+        self.__ハッシュテーブルを更新する(key, value)
         return True
 
     def remove(self, key: Any) -> bool:
