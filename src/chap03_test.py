@@ -224,50 +224,50 @@ class ChainedHash:
         return self.hash_value(key)
 
     def search(self, key: Any) -> Any:
-        p = self.table[self.__hash(key)]
+        node = self.table[self.__hash(key)]
 
-        while p is not None:
-            if p.key == key:
-                return p.value
-            p = p.next
+        while node is not None:
+            if node.key == key:
+                return node.value
+            node = node.next
 
         return None
 
     def add(self, key: Any, value: Any) -> bool:
-        p = self.table[self.__hash(key)]
+        node = self.table[self.__hash(key)]
 
-        while p is not None:
-            if p.key == key:
+        while node is not None:
+            if node.key == key:
                 return False
-            p = p.next
+            node = node.next
 
         temp = Node(key, value, self.table[self.__hash(key)])
         self.table[self.__hash(key)] = temp
         return True
 
     def remove(self, key: Any) -> bool:
-        p = self.table[self.__hash(key)]
-        pp = None
+        node = self.table[self.__hash(key)]
+        pre_node = None
 
-        while p is not Node:
-            if p.key == key:
-                if pp is None:
-                    self.table[self.__hash(key)] = p.next
+        while node is not Node:
+            if node.key == key:
+                if pre_node is None:
+                    self.table[self.__hash(key)] = node.next
                 else:
-                    pp.next = p.next
+                    pre_node.next = node.next
                 return True
-            pp = p
-            p = p.next
+            pre_node = node
+            node = node.next
         return False
 
     def dump(self) -> str:
         result = ''
         for i in range(self.capacity):
-            p = self.table[i]
+            node = self.table[i]
             result += f'{i}'
-            while p is not None:
-                result += f'   -> {p.key} ({p.value})'
-                p = p.next
+            while node is not None:
+                result += f'   -> {node.key} ({node.value})'
+                node = node.next
             result += '\n'
         return result
 
