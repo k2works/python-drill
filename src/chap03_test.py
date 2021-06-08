@@ -223,8 +223,11 @@ class ChainedHash:
     def __hash(self, key):
         return self.hash_value(key)
 
+    def __キーからノードを取得する(self, key: Any) -> Node:
+        return self.table[self.__hash(key)]
+
     def search(self, key: Any) -> Any:
-        node = self.table[self.__hash(key)]
+        node = self.__キーからノードを取得する(key)
 
         while node is not None:
             if node.key == key:
@@ -234,7 +237,7 @@ class ChainedHash:
         return None
 
     def add(self, key: Any, value: Any) -> bool:
-        node = self.table[self.__hash(key)]
+        node = self.__キーからノードを取得する(key)
 
         while node is not None:
             if node.key == key:
@@ -246,7 +249,7 @@ class ChainedHash:
         return True
 
     def remove(self, key: Any) -> bool:
-        node = self.table[self.__hash(key)]
+        node = self.__キーからノードを取得する(key)
         pre_node = None
 
         while node is not Node:
