@@ -220,11 +220,11 @@ class ChainedHash:
 
         return 整数型または文字列型のキーを基にハッシュ値を計算する(key)
 
-    def __hash(self, key):
+    def __ハッシュ値(self, key):
         return self.hash_value(key)
 
     def __キーからノードを取得する(self, key: Any) -> Node:
-        return self.table[self.__hash(key)]
+        return self.table[self.__ハッシュ値(key)]
 
     def search(self, key: Any) -> Any:
         node = self.__キーからノードを取得する(key)
@@ -244,8 +244,8 @@ class ChainedHash:
                 return False
             node = node.next
 
-        temp = Node(key, value, self.table[self.__hash(key)])
-        self.table[self.__hash(key)] = temp
+        temp = Node(key, value, self.table[self.__ハッシュ値(key)])
+        self.table[self.__ハッシュ値(key)] = temp
         return True
 
     def remove(self, key: Any) -> bool:
@@ -255,7 +255,7 @@ class ChainedHash:
         while node is not Node:
             if node.key == key:
                 if pre_node is None:
-                    self.table[self.__hash(key)] = node.next
+                    self.table[self.__ハッシュ値(key)] = node.next
                 else:
                     pre_node.next = node.next
                 return True
