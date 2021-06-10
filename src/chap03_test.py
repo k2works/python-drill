@@ -227,25 +227,30 @@ class ChainedHash:
         self.table[self.__ハッシュ値(key)] = temp
 
     def search(self, key: Any) -> Any:
+        def ノードのキーに対応する値を返す(node: Node, key: Any) -> Any:
+            while node is not None:
+                if node.key == key:
+                    return node.value
+                node = node.next
+            return None
+
         node = self.__キーからノードを取得する(key)
-
-        while node is not None:
-            if node.key == key:
-                return node.value
-            node = node.next
-
-        return None
+        return ノードのキーに対応する値を返す(node, key)
 
     def add(self, key: Any, value: Any) -> bool:
+        def ノードに対応するキーが存在する(node: Node, key: Any) -> bool:
+            while node is not None:
+                if node.key == key:
+                    return True
+                node = node.next
+            return False
+
         node = self.__キーからノードを取得する(key)
-
-        while node is not None:
-            if node.key == key:
-                return False
-            node = node.next
-
-        self.__ハッシュテーブルを更新する(key, value)
-        return True
+        if ノードに対応するキーが存在する(node, key):
+            return False
+        else:
+            self.__ハッシュテーブルを更新する(key, value)
+            return True
 
     def remove(self, key: Any) -> bool:
         node = self.__キーからノードを取得する(key)
