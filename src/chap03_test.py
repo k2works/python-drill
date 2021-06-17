@@ -278,6 +278,23 @@ class ChainedHash:
             result += '\n'
         return result
 
+# %% [markdown]
+# ### オープンアドレス法
+
+
+class TestOpenHash(unittest.TestCase):
+    def setUp(self) -> None:
+        self.hash = OpenHash(13)
+        self.hash.add(1, '赤尾')
+        self.hash.add(5, '武田')
+        self.hash.add(10, '小野')
+        self.hash.add(12, '鈴木')
+        self.hash.add(14, '神崎')
+
+    def test_add(self):
+        self.hash.add(100, '山田')
+        self.assertEqual(self.hash.search(100), '山田')
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
