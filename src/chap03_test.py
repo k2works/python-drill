@@ -368,6 +368,14 @@ class OpenHash:
             p = self.table[hash]
         return False
 
+    def remove(self, key: Any) -> int:
+        p = self.search_node(key)
+        if p is None:
+            return False
+        p.set_status(Status.DELETED)
+        return True
+
+
 
 
 doctest.testmod(verbose=True)
