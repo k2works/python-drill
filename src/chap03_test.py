@@ -340,6 +340,17 @@ class Bucket:
 
 
 class OpenHash:
+    """オープンアドレス法を実現するハッシュクラス
+    >>> hash = OpenHash(13)
+    >>> hash.add(1, '赤尾')
+    True
+    >>> hash.search(1)
+    '赤尾'
+    >>> hash.remove(1)
+    True
+    >>> hash.search(1)
+    """
+
     def __init__(self, capacity: int) -> None:
         self.capacity = capacity
         self.table = [Bucket()] * self.capacity
