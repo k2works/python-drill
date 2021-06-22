@@ -392,8 +392,18 @@ class OpenHash:
         p.set_status(Status.DELETED)
         return True
 
-
-
+    def dump(self) -> str:
+        result = ''
+        for i in range(self.capacity):
+            result += f'{i:2} '
+            if self.table[i].stat == Status.OCCUPIED:
+                result += f'{self.table[i].key} ({self.table[i].value})'
+            elif self.table[i].stat == Status.EMPTY:
+                result += '-- 未登録 --'
+            elif self.table[i].stat == Status.DELETED:
+                result += '-- 削除ずみ --'
+            result += '\n'
+        return result
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
