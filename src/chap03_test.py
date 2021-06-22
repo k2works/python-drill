@@ -296,6 +296,10 @@ class TestOpenHash(unittest.TestCase):
         self.hash.add(100, '山田')
         self.assertEqual(self.hash.search(100), '山田')
 
+    def test_remove(self):
+        self.hash.remove(100)
+        self.assertEqual(self.hash.search(100), None)
+
 
 class Status(Enum):
     OCCUPIED = 0
