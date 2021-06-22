@@ -300,6 +300,23 @@ class TestOpenHash(unittest.TestCase):
         self.hash.remove(100)
         self.assertEqual(self.hash.search(100), None)
 
+    def test_dump(self):
+        expected = """\
+ 0 -- 未登録 --
+ 1 1 (赤尾)
+ 2 14 (神崎)
+ 3 -- 未登録 --
+ 4 -- 未登録 --
+ 5 5 (武田)
+ 6 -- 未登録 --
+ 7 -- 未登録 --
+ 8 -- 未登録 --
+ 9 -- 未登録 --
+10 10 (小野)
+11 -- 未登録 --
+12 12 (鈴木)
+"""
+        self.assertEqual(self.hash.dump(), expected)
 
 class Status(Enum):
     OCCUPIED = 0
