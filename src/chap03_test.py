@@ -352,13 +352,19 @@ class OpenHash:
     """
 
     def __init__(self, capacity: int) -> None:
-        self.capacity = capacity
-        self.table = [Bucket()] * self.capacity
+        def ハッシュテーブルを作る(capacity: int) -> None:
+            self.capacity = capacity
+            self.table = [Bucket()] * self.capacity
+
+        ハッシュテーブルを作る(capacity)
 
     def hash_value(self, key: Any) -> int:
-        if isinstance(key, int):
-            return key % self.capacity
-        return (int(hashlib.md5(str(key).encode()).hexdigest(), 16) % self.capacity)
+        def 整数値または文字列型のキーを基にハッシュ値を計算する(key: Any) -> int:
+            if isinstance(key, int):
+                return key % self.capacity
+            return (int(hashlib.md5(str(key).encode()).hexdigest(), 16) % self.capacity)
+
+        return 整数値または文字列型のキーを基にハッシュ値を計算する(key)
 
     def rehash_value(self, key: Any) -> int:
         return (self.hash_value(key) + 1) % self.capacity
