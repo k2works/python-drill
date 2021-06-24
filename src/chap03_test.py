@@ -358,7 +358,7 @@ class OpenHash:
 
         ハッシュテーブルを作る(capacity)
 
-    def hash_value(self, key: Any) -> int:
+    def __ハッシュ値(self, key: Any) -> int:
         def 整数値または文字列型のキーを基にハッシュ値を計算する(key: Any) -> int:
             if isinstance(key, int):
                 return key % self.capacity
@@ -366,23 +366,23 @@ class OpenHash:
 
         return 整数値または文字列型のキーを基にハッシュ値を計算する(key)
 
-    def rehash_value(self, key: Any) -> int:
-        return (self.hash_value(key) + 1) % self.capacity
+    def __ハッシュ値更新(self, key: Any) -> int:
+        return (self.__ハッシュ値(key) + 1) % self.capacity
 
-    def search_node(self, key: Any) -> Any:
-        hash = self.hash_value(key)
+    def __ノードを検索する(self, key: Any) -> Any:
+        hash = self.__ハッシュ値(key)
         p = self.table[hash]
         for i in range(self.capacity):
             if p.stat == Status.EMPTY:
                 break
             elif p.stat == Status.OCCUPIED and p.key == key:
                 return p
-            hash = self.rehash_value(hash)
+            hash = self.__ハッシュ値更新(hash)
             p = self.table[hash]
         return None
 
     def search(self, key: Any) -> Any:
-        p = self.search_node(key)
+        p = self.__ノードを検索する(key)
         if p is not None:
             return p.value
         else:
@@ -392,18 +392,18 @@ class OpenHash:
         if self.search(key) is not None:
             return False
 
-        hash = self.hash_value(key)
+        hash = self.__ハッシュ値(key)
         p = self.table[hash]
         for i in range(self.capacity):
             if p.stat == Status.EMPTY or p.stat == Status.DELETED:
                 self.table[hash] = Bucket(key, value, Status.OCCUPIED)
                 return True
-            hash = self.rehash_value(hash)
+            hash = self.__ハッシュ値更新(hash)
             p = self.table[hash]
         return False
 
     def remove(self, key: Any) -> int:
-        p = self.search_node(key)
+        p = self.__ノードを検索する(key)
         if p is None:
             return False
         p.set_status(Status.DELETED)
