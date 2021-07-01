@@ -14,6 +14,9 @@ class TestFixedStack(unittest.TestCase):
         s = FixedStack(64)
         s.push(1)
         self.assertEqual(s.dump(), [1])
+        s2 = FixedStack(0)
+        with self.assertRaises(IndexError):
+            s2.push(1)
     
     def test_find(self):
         s = FixedStack(64)
@@ -61,12 +64,17 @@ class FixedStack:
     class Empyt(Exception):
         pass
 
+    class Full(IndexError):
+        pass
+
     def __init__(self, capacity: int = 256) -> None:
         self.stk = [None] * capacity
         self.capacity = capacity
         self.ptr = 0
 
     def push(self, value: Any) -> None:
+        if self.ptr >= self.capacity:
+            raise FixedStack.Full
         self.stk[self.ptr] = value
         self.ptr += 1
 
