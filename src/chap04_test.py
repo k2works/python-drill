@@ -1,4 +1,5 @@
 import unittest
+import doctest
 from typing import Any
 
 # %% [markdown]
@@ -62,6 +63,24 @@ class TestFixedStack(unittest.TestCase):
         self.assertEqual(len(s), 0)
 
 class FixedStack:
+    """ 固定長スタック
+
+    >>> stack = FixedStack(64)
+    >>> stack.push(1)
+    >>> stack.push(2)
+    >>> stack.push(3)
+    >>> stack.dump()
+    [1, 2, 3]
+    >>> stack.peek()
+    3
+    >>> stack.find(2)
+    1
+    >>> stack.count(2)
+    1
+    >>> stack.clear()
+    >>> stack.is_empyt()
+    True
+    """
     class Empyt(Exception):
         pass
 
@@ -124,3 +143,6 @@ class FixedStack:
 
 # %% [markdown]
 # ### 固定長キュー
+
+doctest.testmod(verbose=True)
+unittest.main(argv=[''], verbosity=2, exit=False)
