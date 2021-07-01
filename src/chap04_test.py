@@ -22,6 +22,13 @@ class TestFixedStack(unittest.TestCase):
         s.push(3)
         self.assertEqual(s.find(2), 1)
 
+    def test_count(self):
+        s = FixedStack(64)
+        s.push(1)
+        s.push(1)
+        s.push(1)
+        self.assertEqual(s.count(1), 3)
+
 
 class FixedStack:
     def __init__(self, capacity: int = 256) -> None:
@@ -41,6 +48,13 @@ class FixedStack:
             if self.stk[i] == value:
                 return i
         return -1
+
+    def count(self, value: Any) -> bool:
+        c = 0
+        for i in range(self.ptr):
+            if self.stk[i] == value:
+                c += 1
+        return c
 
 
 # %% [markdown]
