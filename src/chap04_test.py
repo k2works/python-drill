@@ -59,6 +59,7 @@ class TestFixedStack(unittest.TestCase):
         s.push(3)
         s.clear()
         self.assertTrue(s.is_empyt())
+        self.assertEqual(len(s), 0)
 
 class FixedStack:
     class Empyt(Exception):
@@ -71,6 +72,9 @@ class FixedStack:
         self.stk = [None] * capacity
         self.capacity = capacity
         self.ptr = 0
+
+    def __len__(self) -> int:
+        return self.ptr
 
     def push(self, value: Any) -> None:
         if self.ptr >= self.capacity:
