@@ -35,6 +35,9 @@ class TestFixedStack(unittest.TestCase):
         s.push(2)
         s.push(3)
         self.assertEqual(s.peek(), 3)
+        with self.assertRaises(Exception):
+            s.clear()
+            s.peek()
 
     def test_pop(self):
         s = FixedStack(64)
@@ -84,6 +87,8 @@ class FixedStack:
         return c
 
     def peek(self) -> Any:
+        if self.is_empyt():
+            raise FixedStack.Empyt
         return self.stk[self.ptr - 1]
 
     def pop(self) -> Any:
