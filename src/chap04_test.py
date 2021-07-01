@@ -42,6 +42,9 @@ class TestFixedStack(unittest.TestCase):
         s.push(2)
         s.push(3)
         self.assertEqual(s.pop(), 3)
+        with self.assertRaises(Exception):
+            s.clear()
+            s.pop()
 
     def test_clear(self):
         s = FixedStack(64)
@@ -51,8 +54,10 @@ class TestFixedStack(unittest.TestCase):
         s.clear()
         self.assertTrue(s.is_empyt())
 
-
 class FixedStack:
+    class Empyt(Exception):
+        pass
+
     def __init__(self, capacity: int = 256) -> None:
         self.stk = [None] * capacity
         self.capacity = capacity
@@ -82,6 +87,8 @@ class FixedStack:
         return self.stk[self.ptr - 1]
 
     def pop(self) -> Any:
+        if self.is_empyt():
+            raise FixedStack.Empty
         self.ptr -= 1
         return self.stk[self.ptr]
 
