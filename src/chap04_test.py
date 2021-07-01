@@ -29,6 +29,13 @@ class TestFixedStack(unittest.TestCase):
         s.push(1)
         self.assertEqual(s.count(1), 3)
 
+    def test_peek(self):
+        s = FixedStack(64)
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        self.assertEqual(s.peek(), 3)
+
 
 class FixedStack:
     def __init__(self, capacity: int = 256) -> None:
@@ -55,6 +62,9 @@ class FixedStack:
             if self.stk[i] == value:
                 c += 1
         return c
+
+    def peek(self) -> Any:
+        return self.stk[self.ptr - 1]
 
 
 # %% [markdown]
