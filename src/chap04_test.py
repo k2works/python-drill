@@ -60,7 +60,7 @@ class TestFixedStack(unittest.TestCase):
         s.push(2)
         s.push(3)
         s.clear()
-        self.assertTrue(s.is_empyt())
+        self.assertTrue(s.is_empty())
         self.assertEqual(len(s), 0)
 
 class FixedStack:
@@ -79,7 +79,7 @@ class FixedStack:
     >>> stack.count(2)
     1
     >>> stack.clear()
-    >>> stack.is_empyt()
+    >>> stack.is_empty()
     True
     """
     class Empyt(Exception):
@@ -119,12 +119,12 @@ class FixedStack:
         return c
 
     def peek(self) -> Any:
-        if self.is_empyt():
+        if self.is_empty():
             raise FixedStack.Empyt
         return self.stk[self.ptr - 1]
 
     def pop(self) -> Any:
-        if self.is_empyt():
+        if self.is_empty():
             raise FixedStack.Empty
         self.ptr -= 1
         return self.stk[self.ptr]
@@ -132,7 +132,7 @@ class FixedStack:
     def clear(self) -> None:
         self.ptr = 0
 
-    def is_empyt(self) -> bool:
+    def is_empty(self) -> bool:
         return self.ptr <= 0
 
     def is_value(self, i: int, value: Any) -> bool:
