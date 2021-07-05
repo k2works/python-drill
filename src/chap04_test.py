@@ -148,6 +148,13 @@ class TestStack(unittest.TestCase):
         s.push(1)
         self.assertEqual(s.dump(), [1])
 
+    def test_find(self):
+        s = Stack(64)
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        self.assertEqual(s.find(2), 1)
+
 class Stack:
     def __init__(self,maxlen: int = 256) -> None:
         self.capacity = maxlen
@@ -158,6 +165,12 @@ class Stack:
 
     def dump(self) -> Any:
         return list(self.__stk)
+
+    def find(self, value: Any) -> Any:
+        try:
+            return self.__stk.index(value)
+        except ValueError:
+            return -1
     
 
 # %% [markdown]
