@@ -155,6 +155,13 @@ class TestStack(unittest.TestCase):
         s.push(3)
         self.assertEqual(s.find(2), 1)
 
+    def test_count(self):
+        s = Stack(64)
+        s.push(1)
+        s.push(1)
+        s.push(1)
+        self.assertEqual(s.count(1), 3)
+
 class Stack:
     def __init__(self,maxlen: int = 256) -> None:
         self.capacity = maxlen
@@ -171,6 +178,9 @@ class Stack:
             return self.__stk.index(value)
         except ValueError:
             return -1
+
+    def count(self, value: Any) -> int:
+        return self.__stk.count(value)
     
 
 # %% [markdown]
