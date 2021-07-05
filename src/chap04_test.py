@@ -1,6 +1,7 @@
 import unittest
 import doctest
 from typing import Any
+from collections import deque
 
 # %% [markdown]
 # # スタックとキュー
@@ -140,6 +141,24 @@ class FixedStack:
 
 # %% [markdown]
 # ### 固定長スタック
+
+class TestStack(unittest.TestCase):
+    def test_push(self):
+        s = Stack(64)
+        s.push(1)
+        self.assertEqual(s.dump(), [1])
+
+class Stack:
+    def __init__(self,maxlen: int = 256) -> None:
+        self.capacity = maxlen
+        self.__stk = deque([], maxlen)
+    
+    def push(self, value: Any) -> None:
+        self.__stk.append(value)
+
+    def dump(self) -> Any:
+        return list(self.__stk)
+    
 
 # %% [markdown]
 # ## キュー
