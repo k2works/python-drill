@@ -177,6 +177,14 @@ class TestStack(unittest.TestCase):
         self.assertEqual(s.pop(), 3)
         self.assertEqual(len(s), 2)
 
+    def test_clear(self):
+        s = Stack(64)
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        s.clear()
+        self.assertEqual(s.is_empty(), True)
+
 class Stack:
     def __init__(self,maxlen: int = 256) -> None:
         self.capacity = maxlen
@@ -205,6 +213,15 @@ class Stack:
 
     def pop(self) -> Any:
         return self.__stk.pop()
+
+    def clear(self) ->None:
+        self.__stk.clear()
+
+    def is_empty(self) -> bool:
+        return not self.__stk
+
+    def is_full(self) -> bool:
+        return len(self.__stk) == self.__stk.maxlen
     
 
 # %% [markdown]
