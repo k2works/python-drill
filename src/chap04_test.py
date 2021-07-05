@@ -186,6 +186,24 @@ class TestStack(unittest.TestCase):
         self.assertEqual(s.is_empty(), True)
 
 class Stack:
+    """ 固定長スタック
+
+    >>> stack = Stack(64)
+    >>> stack.push(1)
+    >>> stack.push(2)
+    >>> stack.push(3)
+    >>> stack.dump()
+    [1, 2, 3]
+    >>> stack.peek()
+    3
+    >>> stack.find(2)
+    1
+    >>> stack.count(2)
+    1
+    >>> stack.clear()
+    >>> stack.is_empty()
+    True
+    """
     def __init__(self,maxlen: int = 256) -> None:
         self.capacity = maxlen
         self.__stk = deque([], maxlen)
