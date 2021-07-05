@@ -169,10 +169,21 @@ class TestStack(unittest.TestCase):
         s.push(3)
         self.assertEqual(s.peek(), 3)
 
+    def test_pop(self):
+        s = Stack(64)
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        self.assertEqual(s.pop(), 3)
+        self.assertEqual(len(s), 2)
+
 class Stack:
     def __init__(self,maxlen: int = 256) -> None:
         self.capacity = maxlen
         self.__stk = deque([], maxlen)
+
+    def __len__(self) -> int:
+        return len(self.__stk)
     
     def push(self, value: Any) -> None:
         self.__stk.append(value)
@@ -191,6 +202,9 @@ class Stack:
 
     def peek(self) -> Any:
         return self.__stk[-1]
+
+    def pop(self) -> Any:
+        return self.__stk.pop()
     
 
 # %% [markdown]
