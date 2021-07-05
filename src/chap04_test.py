@@ -106,14 +106,14 @@ class FixedStack:
 
     def find(self, value: Any) -> Any:
         for i in range(self.ptr - 1, -1, -1):
-            if self.stk[i] == value:
+            if self.is_value(i, value):
                 return i
         return -1
 
     def count(self, value: Any) -> bool:
         c = 0
         for i in range(self.ptr):
-            if self.stk[i] == value:
+            if self.is_value(i, value):
                 c += 1
         return c
 
@@ -133,6 +133,9 @@ class FixedStack:
 
     def is_empyt(self) -> bool:
         return self.ptr <= 0
+
+    def is_value(self, i: int, value: Any) -> bool:
+        return self.stk[i] == value
 
 
 # %% [markdown]
