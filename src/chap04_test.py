@@ -254,6 +254,13 @@ class TestFixedQueue(unittest.TestCase):
         q.enque(1)
         self.assertEqual(q.dump()[0], 1)
 
+    def test_deque(self):
+        q = FixedQueue(64)
+        q.enque(1)
+        q.enque(2)
+        q.enque(3)
+        self.assertEqual(q.deque(), 1)
+
 
 class FixedQueue:
     def __init__(self, capacity: int) -> None:
@@ -267,7 +274,7 @@ class FixedQueue:
         if self.no >= self.capacity:
             raise Exception
         self.que[self.rear] = x
-        self.front += 1
+        self.rear += 1
         self.no += 1
         if self.front == self.capacity:
             self.rear = 0
@@ -277,6 +284,16 @@ class FixedQueue:
         if self.no <= 0:
             return 'キューは空です。'
         return list(self.que)
+
+    def deque(self) -> Any:
+        if self.no <= 0:
+            raise Exception
+        x = self.que[self.front]
+        self.front += 1
+        self.no -= 1
+        if self.front == self.capacity:
+            self.front = 0
+        return x
 
 
 
