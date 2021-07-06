@@ -248,5 +248,37 @@ class Stack:
 # %% [markdown]
 # ### 固定長キュー
 
+class TestFixedQueue(unittest.TestCase):
+    def test_enque(self):
+        q = FixedQueue(64)
+        q.enque(1)
+        self.assertEqual(q.dump()[0], 1)
+
+
+class FixedQueue:
+    def __init__(self, capacity: int) -> None:
+        self.no = 0
+        self.front = 0
+        self.rear = 0
+        self.capacity = capacity
+        self.que = [None] * capacity
+
+    def enque(self, x: Any) -> None:
+        if self.no >= self.capacity:
+            raise Exception
+        self.que[self.rear] = x
+        self.front += 1
+        self.no += 1
+        if self.front == self.capacity:
+            self.rear = 0
+        return x
+
+    def dump(self) -> Any:
+        if self.no <= 0:
+            return 'キューは空です。'
+        return list(self.que)
+
+
+
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
