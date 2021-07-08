@@ -268,6 +268,13 @@ class TestFixedQueue(unittest.TestCase):
         q.enque(3)
         self.assertEqual(q.peek(), 1) 
 
+    def test_find(self):
+        q = FixedQueue(64)
+        q.enque(1)
+        q.enque(2)
+        q.enque(3)
+        self.assertEqual(q.find(2), 1)
+
 
 class FixedQueue:
     def __init__(self, capacity: int) -> None:
@@ -306,6 +313,12 @@ class FixedQueue:
         if self.no >= self.capacity:
             raise Exception
         return self.que[self.front]
+
+    def find(self, value: Any) -> Any:
+        for i in range(self.no):
+            idx = (i + self.front) % self.capacity
+            if self.que[idx] == value:
+                return idx
 
 
 
