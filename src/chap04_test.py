@@ -261,6 +261,13 @@ class TestFixedQueue(unittest.TestCase):
         q.enque(3)
         self.assertEqual(q.deque(), 1)
 
+    def test_peek(self):
+        q = FixedQueue(64)
+        q.enque(1)
+        q.enque(2)
+        q.enque(3)
+        self.assertEqual(q.peek(), 1) 
+
 
 class FixedQueue:
     def __init__(self, capacity: int) -> None:
@@ -294,6 +301,11 @@ class FixedQueue:
         if self.front == self.capacity:
             self.front = 0
         return x
+
+    def peek(self) -> Any:
+        if self.no >= self.capacity:
+            raise Exception
+        return self.que[self.front]
 
 
 
