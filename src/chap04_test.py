@@ -290,6 +290,15 @@ class TestFixedQueue(unittest.TestCase):
         q.clear()
         self.assertTrue(q.is_empty())
 
+    def test_dump(self):
+        q = FixedQueue(64)
+        q.enque(1)
+        q.enque(2)
+        q.enque(3)
+        self.assertEqual(q.dump()[2], 3)
+        q.clear()
+        self.assertEqual(q.dump(), 'キューは空です。')
+
 
 class FixedQueue:
     def __init__(self, capacity: int) -> None:
