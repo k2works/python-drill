@@ -275,6 +275,13 @@ class TestFixedQueue(unittest.TestCase):
         q.enque(3)
         self.assertEqual(q.find(2), 1)
 
+    def test_count(self):
+        q = FixedQueue(64)
+        q.enque(2)
+        q.enque(2)
+        q.enque(2)
+        self.assertEqual(q.count(2), 3)
+
 
 class FixedQueue:
     def __init__(self, capacity: int) -> None:
@@ -319,6 +326,14 @@ class FixedQueue:
             idx = (i + self.front) % self.capacity
             if self.que[idx] == value:
                 return idx
+
+    def count(self, value: Any) -> bool:
+        c = 0
+        for i in range(self.no):
+            idx = (i + self.front) % self.capacity
+            if self.que[idx] == value:
+                c += 1
+        return c
 
 
 
