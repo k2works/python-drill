@@ -301,6 +301,24 @@ class TestFixedQueue(unittest.TestCase):
 
 
 class FixedQueue:
+    """ 固定長キュー
+
+    >>> queue = FixedQueue(3)
+    >>> queue.enque(1)
+    >>> queue.enque(2)
+    >>> queue.enque(3)
+    >>> queue.dump()
+    [1, 2, 3]
+    >>> queue.peek()
+    1
+    >>> queue.find(2)
+    1
+    >>> queue.count(2)
+    1
+    >>> queue.clear()
+    >>> queue.is_empty()
+    True
+    """
     def __init__(self, capacity: int) -> None:
         self.no = 0
         self.front = 0
