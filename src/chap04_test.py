@@ -282,6 +282,14 @@ class TestFixedQueue(unittest.TestCase):
         q.enque(2)
         self.assertEqual(q.count(2), 3)
 
+    def test_clear(self):
+        q = FixedQueue(64)
+        q.enque(1)
+        q.enque(2)
+        q.enque(3)
+        q.clear()
+        self.assertTrue(q.is_empty())
+
 
 class FixedQueue:
     def __init__(self, capacity: int) -> None:
@@ -334,6 +342,12 @@ class FixedQueue:
             if self.que[idx] == value:
                 c += 1
         return c
+
+    def clear(self) -> None:
+        self.no = self.front = self.rear = 0
+
+    def is_empty(self) -> bool:           
+        return self.no == 0
 
 
 
