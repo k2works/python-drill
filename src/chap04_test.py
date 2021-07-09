@@ -334,7 +334,7 @@ class FixedQueue:
         self.que = [None] * capacity
 
     def enque(self, x: Any) -> None:
-        if self.no >= self.capacity:
+        if self.is_full():
             raise FixedQueue.Full
         self.que[self.rear] = x
         self.rear += 1
@@ -349,7 +349,7 @@ class FixedQueue:
         return list(self.que)
 
     def deque(self) -> Any:
-        if self.no <= 0:
+        if self.is_empty():
             raise FixedQueue.Empyt
         x = self.que[self.front]
         self.front += 1
@@ -359,7 +359,7 @@ class FixedQueue:
         return x
 
     def peek(self) -> Any:
-        if self.no >= self.capacity:
+        if self.is_empty():
             raise  FixedQueue.Empyt
         return self.que[self.front]
 
@@ -382,6 +382,9 @@ class FixedQueue:
 
     def is_empty(self) -> bool:           
         return self.no == 0
+
+    def is_full(self) -> bool:
+        return self.no >= self.capacity
 
 
 
