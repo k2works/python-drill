@@ -319,6 +319,13 @@ class FixedQueue:
     >>> queue.is_empty()
     True
     """
+
+    class Empyt(Exception):
+        pass
+
+    class Full(Exception):
+        pass
+
     def __init__(self, capacity: int) -> None:
         self.no = 0
         self.front = 0
@@ -328,7 +335,7 @@ class FixedQueue:
 
     def enque(self, x: Any) -> None:
         if self.no >= self.capacity:
-            raise Exception
+            raise FixedQueue.Full
         self.que[self.rear] = x
         self.rear += 1
         self.no += 1
@@ -343,7 +350,7 @@ class FixedQueue:
 
     def deque(self) -> Any:
         if self.no <= 0:
-            raise Exception
+            raise FixedQueue.Empyt
         x = self.que[self.front]
         self.front += 1
         self.no -= 1
@@ -353,7 +360,7 @@ class FixedQueue:
 
     def peek(self) -> Any:
         if self.no >= self.capacity:
-            raise Exception
+            raise  FixedQueue.Empyt
         return self.que[self.front]
 
     def find(self, value: Any) -> Any:
