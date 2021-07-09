@@ -333,6 +333,12 @@ class FixedQueue:
         self.capacity = capacity
         self.que = [None] * capacity
 
+    def __len__(self) -> int:
+        return self.no
+
+    def __contains__(self, value: Any) -> bool:
+        return self.count(value)
+
     def enque(self, x: Any) -> None:
         if self.is_full():
             raise FixedQueue.Full
