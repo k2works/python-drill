@@ -107,6 +107,38 @@ def recur3(n: int, result: list) -> list:
 # %% [markdown]
 # ## ハノイの塔
 
+
+class TestMove(unittest.TestCase):
+    def test_円盤3枚(self):
+        excepted = [
+            '円盤[1]を1軸から3軸へ移動',
+            '円盤[2]を1軸から2軸へ移動',
+            '円盤[1]を3軸から2軸へ移動',
+            '円盤[3]を1軸から3軸へ移動',
+            '円盤[1]を2軸から1軸へ移動',
+            '円盤[2]を2軸から3軸へ移動',
+            '円盤[1]を1軸から3軸へ移動'
+        ]
+        actual = move(3, 1, 3, [])
+        self.assertEquals(actual, excepted)
+
+
+def move(no: int, x: int, y: int, result: list) -> list:
+    """no枚の円盤x軸からy軸へ移動
+    >>> move(3, 1, 3, [])
+    ['円盤[1]を1軸から3軸へ移動', '円盤[2]を1軸から2軸へ移動', '円盤[1]を3軸から2軸へ移動', '円盤[3]を1軸から3軸へ移動', '円盤[1]を2軸から1軸へ移動', '円盤[2]を2軸から3軸へ移動', '円盤[1]を1軸から3軸へ移動']
+    """
+    if no > 1:
+        move(no - 1, x, 6 - x - y, result)
+
+    result.append(f'円盤[{no}]を{x}軸から{y}軸へ移動')
+
+    if no > 1:
+        move(no - 1, 6 - x - y, y, result)
+
+    return result
+
+
 # %% [markdown]
 # ## 8王妃問題
 
