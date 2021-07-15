@@ -142,6 +142,31 @@ def move(no: int, x: int, y: int, result: list) -> list:
 # %% [markdown]
 # ## 8王妃問題
 
+class TestEightQueen(unittest.TestCase):
+    def test_各列に1個の王妃を配置する組み合わせを再帰的に列挙(self):
+        eight_queen = EightQueen()
+        eight_queen.set(0)
+        self.assertEqual(len(eight_queen.result), 16777216)
+
+class EightQueen:
+    def __init__(self) -> None:
+        self.result = []
+        self.__pos = [0] * 8
+
+    def set(self, i:int) -> None:
+        for j in range(8):
+            self.__pos[i] = j
+            if i == 7:
+                self.put()
+            else:
+                self.set(i + 1)
+
+    def put(self) -> None:
+        row = []
+        for i in range(8):
+            row.append(self.__pos[i])
+        self.result.append(row)
+
 
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
