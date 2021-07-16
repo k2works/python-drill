@@ -148,6 +148,12 @@ class TestEightQueen(unittest.TestCase):
         eight_queen.set(0)
         self.assertEqual(len(eight_queen.result), 16777216)
 
+    def test_各列に1個の王妃を配置する組み合わせを再帰的に列挙2(self):
+        eight_queen = EightQueen2()
+        eight_queen.set(0)
+        self.assertEqual(len(eight_queen.result), 40320)
+
+
 class EightQueen:
     def __init__(self) -> None:
         self.result = []
@@ -160,6 +166,30 @@ class EightQueen:
                 self.put()
             else:
                 self.set(i + 1)
+
+    def put(self) -> None:
+        row = []
+        for i in range(8):
+            row.append(self.__pos[i])
+        self.result.append(row)
+
+
+class EightQueen2:
+    def __init__(self) -> None:
+        self.result = []
+        self.__pos = [0] * 8
+        self.__flag = [False] * 8
+
+    def set(self, i: int) -> None:
+        for j in range(8):
+            if not self.__flag[j]:
+                self.__pos[i] = j
+                if i == 7:
+                    self.put()
+                else:
+                    self.__flag[j] = True
+                    self.set(i + 1)
+                    self.__flag[j] = False
 
     def put(self) -> None:
         row = []
