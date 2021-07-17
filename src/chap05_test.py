@@ -165,6 +165,7 @@ class EightQueen:
         self.__pos = [0] * 8
 
     def set(self, i:int) -> None:
+        """i列目に王妃を配置"""
         for j in range(8):
             self.__pos[i] = j
             if i == 7:
@@ -173,6 +174,7 @@ class EightQueen:
                 self.set(i + 1)
 
     def put(self) -> None:
+        """盤面(各列の王妃の位置)"""
         row = []
         for i in range(8):
             row.append(self.__pos[i])
@@ -186,6 +188,7 @@ class EightQueen2:
         self.__flag = [False] * 8
 
     def set(self, i: int) -> None:
+        """i列目の適切な位置に王妃を配置"""
         for j in range(8):
             if not self.__flag[j]:
                 self.__pos[i] = j
@@ -197,6 +200,7 @@ class EightQueen2:
                     self.__flag[j] = False
 
     def put(self) -> None:
+        """盤面(各列の王妃の位置)"""
         row = []
         for i in range(8):
             row.append(self.__pos[i])
@@ -212,6 +216,7 @@ class EightQueen3:
         self.__flag_c = [False] * 15
 
     def set(self, i: int) -> None:
+        """i列目の適切な位置に王妃を配置"""
         for j in range(8):
             if (not self.__flag_a[j]
                 and not self.__flag_b[i + j]
@@ -228,12 +233,14 @@ class EightQueen3:
                                                      j] = self.__flag_c[i - j + 7] = False
 
     def put(self) -> None:
+        """盤面(各列の王妃の位置)"""
         row = []
         for i in range(8):
             row.append(self.__pos[i])
         self.result.append(row)
 
     def put2(self) -> None:
+        """盤面を□と■で出力"""
         for j in range(8):
             for i in range(8):
                 print('■' if self.__pos[i] == j else '□', end='')
