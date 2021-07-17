@@ -153,6 +153,11 @@ class TestEightQueen(unittest.TestCase):
         eight_queen.set(0)
         self.assertEqual(len(eight_queen.result), 40320)
 
+    def test_8王妃問題を解くプログラム(self):
+        eight_queen = EightQueen3()
+        eight_queen.set(0)
+        self.assertEqual(len(eight_queen.result), 92)
+
 
 class EightQueen:
     def __init__(self) -> None:
@@ -196,6 +201,45 @@ class EightQueen2:
         for i in range(8):
             row.append(self.__pos[i])
         self.result.append(row)
+
+
+class EightQueen3:
+    def __init__(self) -> None:
+        self.result = []
+        self.__pos = [0] * 8
+        self.__flag_a = [False] * 8
+        self.__flag_b = [False] * 15
+        self.__flag_c = [False] * 15
+
+    def set(self, i: int) -> None:
+        for j in range(8):
+            if (not self.__flag_a[j]
+                and not self.__flag_b[i + j]
+                    and not self.__flag_c[i - j + 7]):
+                self.__pos[i] = j
+                if i == 7:
+                    self.put()
+                    self.put2()
+                else:
+                    self.__flag_a[j] = self.__flag_b[i +
+                                                     j] = self.__flag_c[i - j + 7] = True
+                    self.set(i + 1)
+                    self.__flag_a[j] = self.__flag_b[i +
+                                                     j] = self.__flag_c[i - j + 7] = False
+
+    def put(self) -> None:
+        row = []
+        for i in range(8):
+            row.append(self.__pos[i])
+        self.result.append(row)
+
+    def put2(self) -> None:
+        for j in range(8):
+            for i in range(8):
+                print('■' if self.__pos[i] == j else '□', end='')
+            print()
+        print()
+
 
 
 doctest.testmod(verbose=True)
