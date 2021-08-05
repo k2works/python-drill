@@ -59,6 +59,29 @@ def bubble_sort3(a: MutableSequence):
                 last = j
         k = last
 
+class TestShakerSort(unittest.TestCase):
+    def test_shaker_sort(self):
+        array = [9, 1, 3, 4, 6, 7, 8]
+        shaker_sort(array)
+        self.assertEqual(array, [1, 3, 4, 6, 7, 8, 9])
+
+def shaker_sort(a: MutableSequence):
+    """シェーカーソート（双方向バブルソート）"""
+    left = 0
+    right = len(a) - 1
+    while left < right:
+        for j in range(right, left, -1):
+            if a[j - 1] > a[j]:
+                a[j - 1], a[j] = a[j], a[j - 1]
+                last = j
+        left = last
+
+        for j in range(left, right):
+            if a[j] > a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+                last = j
+        right = last
+
 
 # %% [markdown]
 # ## 単純選択ソート
