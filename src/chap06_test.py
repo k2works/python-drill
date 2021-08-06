@@ -47,6 +47,7 @@ def bubble_sort2(a: MutableSequence):
         if exchange == 0:
             break
 
+
 def bubble_sort3(a: MutableSequence):
     """ 単純選択ソート（第3版：捜査範囲を限定）"""
     n = len(a)
@@ -59,11 +60,13 @@ def bubble_sort3(a: MutableSequence):
                 last = j
         k = last
 
+
 class TestShakerSort(unittest.TestCase):
     def test_shaker_sort(self):
         array = [9, 1, 3, 4, 6, 7, 8]
         shaker_sort(array)
         self.assertEqual(array, [1, 3, 4, 6, 7, 8, 9])
+
 
 def shaker_sort(a: MutableSequence):
     """シェーカーソート（双方向バブルソート）"""
@@ -86,6 +89,24 @@ def shaker_sort(a: MutableSequence):
 # %% [markdown]
 # ## 単純選択ソート
 
+class TestSelectionSort(unittest.TestCase):
+    def test_selection_sort(self):
+        array = [6, 4, 8, 3, 1, 9, 7]
+        selection_sort(array)
+        self.assertEqual(array, [1, 3, 4, 6, 7, 8, 9])
+
+
+def selection_sort(a: MutableSequence):
+    """ 単純選択ソート"""
+    n = len(a)
+    for i in range(n-1):
+        min = i
+        for j in range(i+1, n):
+            if a[j] < a[min]:
+                min = j
+        a[i], a[min] = a[min], a[i]
+
+
 # %% [markdown]
 # ## 単純挿入ソート
 
@@ -103,6 +124,5 @@ def shaker_sort(a: MutableSequence):
 
 # %% [markdown]
 # ## 度数ソート
-
 doctest.testmod(verbose=True)
 unittest.main(argv=[''], verbosity=2, exit=False)
