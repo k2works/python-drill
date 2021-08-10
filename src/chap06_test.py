@@ -110,6 +110,24 @@ def selection_sort(a: MutableSequence):
 # %% [markdown]
 # ## 単純挿入ソート
 
+class TestInsertionSort(unittest.TestCase):
+    def test_insertion_sort(self):
+        array = [6, 4, 8, 3, 1, 9, 7]
+        insertion_sort(array)
+        self.assertEqual(array, [1, 3, 4, 6, 7, 8, 9])
+
+
+def insertion_sort(a: MutableSequence):
+    """ 単純挿入ソート"""
+    n = len(a)
+    for i in range(1, n):
+        j = i
+        tmp = a[i]
+        while j > 0 and a[j - 1] > tmp:
+            a[j] = a[j - 1]
+            j -= 1
+        a[j] = tmp
+
 # %% [markdown]
 # ## シェルソート
 
@@ -121,6 +139,7 @@ def selection_sort(a: MutableSequence):
 
 # %% [markdown]
 # ## ヒープソート
+
 
 # %% [markdown]
 # ## 度数ソート
