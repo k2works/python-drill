@@ -1,3 +1,4 @@
+import bisect
 from typing import MutableSequence
 import unittest
 import doctest
@@ -127,6 +128,49 @@ def insertion_sort(a: MutableSequence):
             a[j] = a[j - 1]
             j -= 1
         a[j] = tmp
+
+
+class TestBinaryInsertionSort(unittest.TestCase):
+    def test_binary_insertion_sort(self):
+        array = [6, 4, 8, 3, 1, 9, 7]
+        binary_insertion_sort(array)
+        self.assertEqual(array, [1, 3, 4, 6, 7, 8, 9])
+
+    def test_binary_insertion_sort2(self):
+        array = [6, 4, 8, 3, 1, 9, 7]
+        binary_insertion_sort2(array)
+        self.assertEqual(array, [1, 3, 4, 6, 7, 8, 9])
+
+
+def binary_insertion_sort(a: MutableSequence):
+    """ 二分挿入ソート """
+    n = len(a)
+    for i in range(1, n):
+        key = a[i]
+        pl = 0
+        pr = i - 1
+
+        while True:
+            pc = (pl + pr) // 2
+            if a[pc] == key:
+                break
+            elif a[pc] < key:
+                pl = pc + 1
+            else:
+                pr = pc - 1
+            if pl > pr:
+                break
+        pd = pc + 1 if pl < pr else pr + 1
+        for j in range(i, pd, -1):
+            a[j] = a[j - 1]
+        a[pd] = key
+
+
+def binary_insertion_sort2(a: MutableSequence):
+    """ 二分挿入ソート """
+    for i in range(1, len(a)):
+        bisect.insort(a, a.pop(i), 0, i)
+
 
 # %% [markdown]
 # ## シェルソート
