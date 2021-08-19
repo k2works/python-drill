@@ -174,6 +174,46 @@ def binary_insertion_sort2(a: MutableSequence):
 
 # %% [markdown]
 # ## シェルソート
+class TestShellSort(unittest.TestCase):
+    def test_shell_sort(self):
+        array = [6, 4, 8, 3, 1, 9, 7]
+        shell_sort(array)
+        self.assertEqual(array, [1, 3, 4, 6, 7, 8, 9])
+
+    def test_shell_sort2(self):
+        array = [6, 4, 8, 3, 1, 9, 7]
+        shell_sort2(array)
+        self.assertEqual(array, [1, 3, 4, 6, 7, 8, 9])
+
+def shell_sort(a: MutableSequence):
+    """ シェルソート"""
+    n = len(a)
+    h = n // 2
+    while h > 0:
+        for i in range(h, n):
+            j = i - h
+            tmp = a[i]
+            while j >= 0 and a[j] > tmp:
+                a[j + h] = a[j]
+                j -= h
+            a[j + h] = tmp
+        h //= 2
+
+def shell_sort2(a: MutableSequence):
+    """ シェルソート（第２版）"""
+    n = len(a)
+    h = 1 
+    while (h < n // 9):
+        h = 3 * h + 1
+    while h > 0:
+        for i in range(h, n):
+            j = i - h
+            tmp = a[i]
+            while j >= 0 and a[j] > tmp:
+                a[j + h] = a[j]
+                j -= h
+            a[j + h] = tmp
+        h //= 3
 
 # %% [markdown]
 # ## クイックソート
